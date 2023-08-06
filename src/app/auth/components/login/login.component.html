@@ -1,0 +1,112 @@
+<div
+  class="container flex flex-col md:flex-row justify-center items-center bg-bgPrimary w-screen"
+>
+  <div
+    class="w-1/2 flex flex-col justify-center items-center md:items-end mt-4"
+  >
+    <h1 class="text-4xl font-bold text-blue-700">FriendSphere</h1>
+    <span class="text-lg font-medium text-gray-500 hidden md:inline">
+      Connecting Friends, Building Relationships,<br />
+      and Sharing Moments in the FriendSphere.
+    </span>
+  </div>
+
+  <div class="w-screen md:w-1/2">
+    <div class="flex flex-col justify-center px-6 md:py-12 lg:px-8">
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h2
+          class="md:mt-10 mt-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+        >
+          SignIn
+        </h2>
+      </div>
+
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <form
+          class="space-y-6"
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit(loginForm)"
+        >
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Email address</label
+            >
+            <div class="mt-2">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                formControlName="email"
+                class="block px-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+            <small
+              *ngIf="AllControles?.email?.errors?.['email'] && submitted"
+              id="email"
+              class="form-text text-red-700"
+              >Invalid email</small
+            >
+            <small
+              *ngIf="AllControles?.email?.errors && submitted"
+              id="email"
+              class="form-text text-red-700"
+              >Email is required</small
+            >
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between">
+              <label
+                for="password"
+                class="block text-sm font-medium leading-6 text-gray-900"
+                >Password</label
+              >
+              <div class="text-sm">
+                <a
+                  href="#"
+                  class="font-semibold text-indigo-600 hover:text-indigo-500"
+                  >Forgot password?</a
+                >
+              </div>
+            </div>
+            <div class="mt-2">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                formControlName="password"
+                class="block px-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+            <small
+              *ngIf="AllControles?.password?.errors && submitted"
+              id="password"
+              class="form-text text-red-700"
+              >Password is required
+            </small>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Sign in
+            </button>
+          </div>
+        </form>
+
+        <p class="mt-10 text-center text-sm text-gray-500">
+          Don't have an account?
+          <a
+            routerLink="/auth/register"
+            class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            >Register</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
