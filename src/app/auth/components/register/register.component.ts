@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
-import { UserModel } from '../../user.model';
 
 @Component({
   selector: 'app-register',
@@ -33,7 +32,7 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-  onSubmit(value: UserModel) {
+  onSubmit(value: any) {
     this.submitted = true;
 
     if (this.registerForm.invalid) {
@@ -63,7 +62,7 @@ export class RegisterComponent implements OnInit {
         next: (res) => {
           localStorage.setItem('user', JSON.stringify(res));
           this.toastr.success(res.message);
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/home');
         },
         error: (error) => {
           this.toastr.success(error.error.message);
