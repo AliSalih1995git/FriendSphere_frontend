@@ -1,1 +1,34 @@
-<app-navebar></app-navebar>
+<div class="home">
+  <app-navebar></app-navebar>
+  <div class="left_home">
+    <app-left-side></app-left-side>
+  </div>
+  <div class="home_middle bg-blue-500" #middle>
+    <h1>Add post</h1>
+    <h1>display post</h1>
+    <span>Enter Comment</span><br />
+    <span>Display Comment</span>
+
+    <div class="posts"></div>
+  </div>
+  <div class="right_home">
+    <app-right-side></app-right-side>
+  </div>
+</div>
+
+<!-- <app-left-home [user]="user$ | async"></app-left-home> -->
+
+<!-- <app-send-verification
+    *ngIf="(user$ | async)?.verified === false"
+    [user]="user$ | async"
+    ></app-send-verification> -->
+<!-- <app-create-post
+        [user]="user$ | async"
+        (setVisible)="setVisible($event)"
+  ></app-create-post> -->
+
+<!-- <div *ngFor="let post of posts; let i = index">
+<app-post [post]="post" [user]="user$ | async"></app-post>
+  </div> -->
+
+<!-- <app-right-home [user]="user$ | async"></app-right-home> -->
