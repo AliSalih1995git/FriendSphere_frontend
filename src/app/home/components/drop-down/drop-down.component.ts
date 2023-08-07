@@ -7,7 +7,9 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { createPopper, Instance, Placement } from '@popperjs/core';
+import { MainServiceService } from 'src/app/service/main-service.service';
 
 @Component({
   selector: 'app-drop-down',
@@ -25,7 +27,10 @@ export class DropDownComponent implements OnInit, AfterViewInit {
     new EventEmitter<boolean>();
 
   private popperInstance: Instance | null = null;
-
+  constructor(
+    private mainService: MainServiceService,
+    private router: Router
+  ) {}
   ngOnInit(): void {}
 
   ngAfterViewInit() {
@@ -51,5 +56,9 @@ export class DropDownComponent implements OnInit, AfterViewInit {
     event.preventDefault();
     this.dropdownPopoverShow = !this.dropdownPopoverShow;
     this.setShowUserMenu.emit(this.dropdownPopoverShow);
+  }
+  logoutHandler() {
+    this.mainService.logout();
+    this.router.navigateByUrl('auth/login');
   }
 }

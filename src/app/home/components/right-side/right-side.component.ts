@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainServiceService } from 'src/app/service/main-service.service';
 
 @Component({
   selector: 'app-right-side',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightSideComponent implements OnInit {
   user: any;
-  constructor() {}
+  constructor(private mainService: MainServiceService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user = this.mainService.getUserData();
+  }
 }

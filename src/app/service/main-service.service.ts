@@ -20,7 +20,10 @@ export class MainServiceService {
     return false;
   }
   getUserData(): any {
-    let userData = localStorage.getItem(JSON.parse('user'));
-    return userData;
+    let userData = localStorage.getItem('user');
+    return userData ? JSON.parse(userData) : null;
+  }
+  logout() {
+    localStorage.clear();
   }
 }

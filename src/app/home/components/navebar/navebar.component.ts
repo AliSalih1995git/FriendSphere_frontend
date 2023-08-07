@@ -16,12 +16,13 @@ export class NavebarComponent implements OnInit {
   page = 'home';
   @ViewChild('usermenu') userMenu!: ElementRef<any>;
   constructor(
-    private themeService: MainServiceService,
+    private mainService: MainServiceService,
     private router: Router
   ) {}
   ngOnInit(): void {
-    this.darkTheme = this.themeService.darkTheme();
-    this.user = this.themeService.getUserData();
+    this.darkTheme = this.mainService.darkTheme();
+    this.user = this.mainService.getUserData();
+    console.log(this.user, 'USER');
   }
 
   outsideClickHandler(event: MouseEvent): void {

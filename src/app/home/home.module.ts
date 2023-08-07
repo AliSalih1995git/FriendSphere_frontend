@@ -7,7 +7,7 @@ import { NavebarComponent } from './components/navebar/navebar.component';
 import { LeftSideComponent } from './components/left-side/left-side.component';
 import { RightSideComponent } from './components/right-side/right-side.component';
 import { DropDownComponent } from './components/drop-down/drop-down.component';
-
+import { PostModule } from '../post/post.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +15,8 @@ import { DropDownComponent } from './components/drop-down/drop-down.component';
     NavebarComponent,
     LeftSideComponent,
     RightSideComponent,
-    DropDownComponent
+    DropDownComponent,
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule
-  ]
+  imports: [CommonModule, HomeRoutingModule, PostModule],
 })
-export class HomeModule { }
+export class HomeModule {}

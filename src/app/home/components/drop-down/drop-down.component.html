@@ -2,27 +2,27 @@
   <div class="w-full sm:w-6/12 md:w-4/12 px-4">
     <div class="relative inline-flex align-middle w-full">
       <button
-        class="circle_icon text-black font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        class="text-black font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         (click)="toggleDropdown($event)"
         #btnDropdownRef
       >
-        !
+        <i class="fa-solid fa-angle-down" style="color: #005eff"></i>
       </button>
     </div>
   </div>
 </div>
-<div class="z-50" style="min-width: 12rem" #popoverDropdownRef>
+<div class="z-50" #popoverDropdownRef>
   <div
     class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
     style="min-width: 12rem"
     [ngClass]="dropdownPopoverShow ? 'block' : 'hidden'"
   >
-    <a
-      href="#pablo"
+    <span
       class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+      (click)="logoutHandler()"
     >
       Logout
-    </a>
+    </span>
   </div>
 </div>
