@@ -1,17 +1,21 @@
 <div class="createPost">
   <div class="createPost_header">
     <img [src]="user?.picture" alt="" />
-    <div class="open_post hover2" (click)="setVisible()">
+    <div class="open_post hover2" (click)="setVisiblePopup()">
       What's on your mind, {{ user?.first_name }}
     </div>
   </div>
   <div class="create_splitter"></div>
   <div class="createPost_body">
     <div></div>
-    <div class="createPost_icon hover1" (click)="setVisible()">
+    <div class="createPost_icon hover1" (click)="setVisiblePopup()">
       <i class="fa-solid fa-image" style="color: #005eff"></i> Photo/Video
-      <!-- Use an Angular component for Photo/Video -->
     </div>
     <div></div>
   </div>
+  <app-create-post-popup
+    [user]="user"
+    *ngIf="setVisible"
+    (setVisible)="closePopup()"
+  ></app-create-post-popup>
 </div>

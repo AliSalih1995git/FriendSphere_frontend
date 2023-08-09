@@ -6,12 +6,19 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit {
-  visible: boolean = false;
+  @Input() setVisible!: boolean;
   constructor() {}
 
   ngOnInit(): void {}
   @Input() user: any;
-  setVisible() {
-    this.visible = true;
+  setVisiblePopup() {
+    console.log('post popup open');
+
+    this.setVisible = true;
+  }
+  closePopup() {
+    console.log('post popup close');
+
+    this.setVisible = false;
   }
 }

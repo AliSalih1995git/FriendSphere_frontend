@@ -1,0 +1,68 @@
+<div class="overflow_a scrollbar">
+  <!-- <app-emoji-picker
+    [text]="text"
+    [user]="user"
+    (setText)="setText($event)"
+    type2
+  ></app-emoji-picker> -->
+  <div class="createPost_header">
+    <img [src]="user?.picture" alt="" />
+
+    <textarea
+      class="open_post hover2"
+      placeholder="What's on your mind, {{ user.first_name }}"
+      name="textarea"
+      [(ngModel)]="text"
+    ></textarea>
+  </div>
+  <div class="create_splitter"></div>
+  <div class="add_pics_wrap">
+    <div
+      *ngIf="images && images.length; else previewPlaceholder"
+      class="add_pics_inside1 p0"
+    >
+      <div class="preview_actions">
+        <!-- <button class="hover1">
+          <i class="fa-solid fa-pen-to-square" style="color: #0d50c5"></i>
+          Edit
+        </button> -->
+        <button class="hover1" (click)="addMoreImages()">
+          <i class="fa-solid fa-image" style="color: #1056d1"></i>
+          Add Photos/Videos
+        </button>
+      </div>
+      <div class="small_white_circle" (click)="removeImages()">
+        <i class="fa-regular fa-circle-xmark" style="color: #0751cf"></i>
+      </div>
+      <div [ngClass]="getPreviewClass()">
+        <img
+          *ngFor="let img of images; let i = index"
+          [src]="img"
+          [alt]="'Image ' + (i + 1)"
+        />
+      </div>
+    </div>
+    <ng-template #previewPlaceholder>
+      <div class="add_pics_inside1">
+        <div class="small_white_circle" (click)="showPreview()">
+          <i class="fa-solid fa-xmark" style="color: #0c45a6"></i>
+        </div>
+        <div class="add_col">
+          <div class="add_circle">
+            <i class="fa-solid fa-plus" style="color: #0c4cbb"></i>
+          </div>
+          <span>Add Photos/Videos</span>
+          <span>or drag and drop</span>
+          <!-- Move the input field here to make it visible -->
+          <input
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/gif"
+            multiple
+            #imageInput
+            (change)="handleImages($event)"
+          />
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
