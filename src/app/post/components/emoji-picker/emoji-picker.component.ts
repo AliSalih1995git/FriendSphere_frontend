@@ -23,8 +23,6 @@ export class EmojiPickerComponent implements OnInit {
     this.isEmojiPickerVisible = !this.isEmojiPickerVisible;
   }
   emitData() {
-    console.log(this.textArea, this.selectedBackground);
-
     this.dataFromEmojicomp.emit({
       textArea: this.textArea,
       selectedBackground: this.selectedBackground,

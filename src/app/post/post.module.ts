@@ -10,9 +10,18 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ImagePreviewComponent } from './components/image-preview/image-preview.component';
 import { AddToYourPostComponent } from './components/add-to-your-post/add-to-your-post.component';
 import { EmojiPickerComponent } from './components/emoji-picker/emoji-picker.component';
+import { DisplayPostComponent } from './components/display-post/display-post.component';
 
 @NgModule({
-  declarations: [PostComponent, CreatePostComponent, CreatePostPopupComponent, ImagePreviewComponent, AddToYourPostComponent, EmojiPickerComponent],
+  declarations: [
+    PostComponent,
+    CreatePostComponent,
+    CreatePostPopupComponent,
+    ImagePreviewComponent,
+    AddToYourPostComponent,
+    EmojiPickerComponent,
+    DisplayPostComponent,
+  ],
   imports: [CommonModule, PostRoutingModule, FormsModule, PickerModule],
   exports: [PostComponent],
 })

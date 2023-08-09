@@ -22,7 +22,6 @@ export class NavebarComponent implements OnInit {
   ngOnInit(): void {
     this.darkTheme = this.mainService.darkTheme();
     this.user = this.mainService.getUserData();
-    console.log(this.user, 'USER');
   }
 
   outsideClickHandler(event: MouseEvent): void {

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Post } from '../interfaces/AllInterface';
 
 @Injectable({
   providedIn: 'root',
@@ -8,9 +9,18 @@ import { Observable } from 'rxjs';
 export class PostServiceService {
   constructor(private http: HttpClient) {}
 
+  getAllPost(): Observable<Post[]> {
+    return this.http.get<Post[]>(`/getAllposts`);
+  }
+
   createPost(payload: any): Observable<any> {
-    console.log(payload, 'Post DAta');
+    console.log(payload, 'payload');
 
     return this.http.post(`/createPost`, payload);
+  }
+  uploadImages(formData: FormData): Observable<any> {
+    console.log(formData, 'formData');
+
+    return this.http.post(`/uploadImages`, formData);
   }
 }

@@ -24,7 +24,6 @@ export class InterSeptorsInterceptor implements HttpInterceptor {
           url: `${BackendUrl}${request.url}`,
           setHeaders: { Authorization: `Bearer ${token}` },
         });
-        console.log(newRequest, 'Token');
         return next.handle(newRequest);
       }
     }
