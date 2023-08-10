@@ -3,34 +3,20 @@
     <div class="contacts_header_left">Contacts</div>
   </div>
   <div class="splitter1"></div>
-  <div class="contacts_list">
+  <div class="contacts_list" *ngFor="let friend of friends">
     <div class="contact hover3 flex flex-row justify-between items-center">
-      <div class="contact_img">
-        <!-- <span class="contact_circle">img</span> -->
-        <img [src]="user?.picture" class="contact_circle" alt="" />
-      </div>
-      <span> first_name </span>
+      <a routerLink="/profile" class="contact_img">
+        <img [src]="friend?.picture" class="contact_circle" alt="" />
+      </a>
+      <span> {{ friend?.first_name }} {{ friend?.last_name }} </span>
       <span>
         <img
           src="../../../../assets/styles/icons/right-side/addFriend.png"
           class="filter_blue addFriend_img"
           alt=""
+          (click)="handleAddFriend(friend._id)"
         />
-        <!-- <img
-          src="../../../icons/addFriend.png"
-          alt=""
-          class="filter_blue addFriend_img"
-          onClick="{handleAddFriend}"
-        /> -->
       </span>
     </div>
-    <!-- {friends?.map((friend) => (
-      <Contact
-        key={friend._id}
-        user={friend}
-        addFriendHandler={addFriendHandler}
-        token={user.token}
-      />
-    ))} -->
   </div>
 </div>

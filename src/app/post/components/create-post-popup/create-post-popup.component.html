@@ -1,0 +1,50 @@
+<!-- <div class="w-1/2 h-52 mt-11 bg-blue-600"> -->
+<div class="postBox">
+  <div class="box_header">
+    <div class="small_circle" (click)="closeHandler()">
+      <i class="fa-solid fa-x" style="color: #0641a7"></i>
+    </div>
+    <span>Create Post</span>
+  </div>
+  <div class="box_profile">
+    <img [src]="user?.picture" alt="" class="box_profile_img" />
+    <div class="box_col">
+      <div class="box_profile_name">
+        {{ user?.first_name }} {{ user?.last_name }}
+      </div>
+      <div class="box_privacy">
+        <img src="../../../../assets/styles/iconsImage/public.png" alt="" />
+        <span>Public</span>
+        <i class="fa-solid fa-arrow-down" style="color: #0443ae"></i>
+      </div>
+    </div>
+  </div>
+  <!-- emoji picker  -->
+
+  <ng-container *ngIf="!showAddPost; else imagePreview">
+    <app-emoji-picker
+      [user]="user"
+      (dataFromEmojicomp)="handleDataChange($event)"
+    ></app-emoji-picker>
+  </ng-container>
+
+  <ng-template #imagePreview>
+    <app-image-preview
+      (setShowPrev)="showPreview()"
+      [text]="textArea"
+      [user]="user"
+      (imagesSelected)="handleImagesSelected($event)"
+    ></app-image-preview>
+  </ng-template>
+
+  <app-add-to-your-post (setShowPrev)="showPreview()"></app-add-to-your-post>
+
+  <button class="post_submit" (click)="postSubmit()" [disabled]="loading">
+    <ng-container *ngIf="loading; else postButtonText">
+      <h6>loading</h6>
+      <!-- <angular-pulse-loader color="#fff" [size]="5"></angular-pulse-loader> -->
+    </ng-container>
+    <ng-template #postButtonText> Post </ng-template>
+  </button>
+</div>
+<!-- </div> -->

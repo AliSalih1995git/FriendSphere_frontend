@@ -1,0 +1,22 @@
+<div class="comment" class="comment">
+  <img [src]="comment.commentBy.picture" alt="" class="comment_img" />
+  <div class="comment_col">
+    <div class="comment_wrap">
+      <div class="post_profile_name">
+        {{ comment.commentBy.first_name }} {{ comment.commentBy.last_name }}
+      </div>
+      <div class="comment_text">{{ comment.comment }}</div>
+    </div>
+    <img
+      *ngIf="comment.image"
+      [src]="comment.image"
+      alt=""
+      class="comment_image"
+    />
+    <div class="comment_actions">
+      <span>Like</span>
+      <span>Reply</span>
+      <span>{{ comment.commentAt | date : "short" }}</span>
+    </div>
+  </div>
+</div>

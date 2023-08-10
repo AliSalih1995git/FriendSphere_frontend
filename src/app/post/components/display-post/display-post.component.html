@@ -1,0 +1,109 @@
+<div class="post">
+  <div class="post_header">
+    <a [routerLink]="['/profile', post.user.username]" class="post_header_left">
+      <img [src]="post.user.picture" [alt]="post.user.username" />
+      <div class="header_col">
+        <div class="post_profile_name">
+          {{ post.user.first_name }} {{ post.user.last_name }}
+          <div class="updated_p">
+            <!-- {{ post.type === 'profilePicture' ? `updated ${post.user.gender === 'male' ? 'his' : 'her'} profile picture` : '' }}
+              {{ post.type === 'cover' ? `updated ${post.user.gender === 'male' ? 'his' : 'her'} cover picture` : '' }} -->
+          </div>
+        </div>
+        <div class="post_profile_privacy_date">
+          {{ post.createdAt | date : "medium" }} .
+          <img src="../../../../assets/styles/iconsImage/public.png" alt="" />
+        </div>
+      </div>
+    </a>
+    <div class="post_header_right hover1">
+      <i class="fa-solid fa-ellipsis" style="color: #0a4cbd"></i>
+    </div>
+  </div>
+  <!-- diplay images -->
+  <ng-container *ngIf="post.background; else noBackground">
+    <div
+      class="post_bg"
+      [style.backgroundImage]="'url(' + post.background + ')'"
+    >
+      <div class="post_bg_text">{{ post.text }}</div>
+    </div>
+  </ng-container>
+  <ng-template #noBackground>
+    <div class="post_text">{{ post.text }}</div>
+    <!-- Grid of Images -->
+    <ng-container *ngIf="post.images && post.images.length; else noImages">
+      <div
+        [ngClass]="{
+          grid_1: post.images.length === 1,
+          grid_2: post.images.length === 2,
+          grid_3: post.images.length === 3,
+          grid_4: post.images.length === 4,
+          grid_5: post.images.length >= 5
+        }"
+      >
+        <img
+          class="image_post"
+          *ngFor="let image of post.images.slice(0, 5); let i = index"
+          [src]="image.url"
+          [alt]=""
+          [class]="'img-' + i"
+        />
+
+        <div class="more-pics-shadow" *ngIf="post.images.length > 5">
+          +{{ post.images.length - 5 }}
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noImages></ng-template>
+  </ng-template>
+
+  <!--  Count and Info -->
+  <div class="post_infos">
+    <div class="reacts_count">
+      <div class="reacts_count_imgs"></div>
+      <div class="reacts_count_num"></div>
+    </div>
+    <div class="to_right">
+      <div class="comments_count">{{ post.comments.length }} comments</div>
+      <div class="share_count">1 share</div>
+    </div>
+  </div>
+
+  <!-- Post Actions -->
+  <div class="post_actions">
+    <!-- pop up imoji  -->
+    <!-- <app-reacts-popup
+      [visible]="visible"
+      [setVisible]="setVisible"
+    ></app-reacts-popup> -->
+    <div
+      class="post_action hover1"
+      (mouseover)="setPopupVisible(true)"
+      (mouseleave)="setPopupVisible(false)"
+    >
+      <i class="like_icon"></i>
+      <span>Like</span>
+    </div>
+    <div class="post_action hover1" (click)="toggleCommentVisibility()">
+      <i class="comment_icon"></i>
+      <span>Comment</span>
+    </div>
+  </div>
+
+  <!-- Comments Wrap -->
+  <div class="comments_wrap">
+    <div class="comments_order"></div>
+    <app-create-comment
+      [user]="user"
+      [postId]="post._id"
+      (comment)="handleComment($event)"
+    ></app-create-comment>
+    <ng-container *ngFor="let comment of post.comments">
+      <app-display-comment
+        *ngIf="commentsVisible"
+        [comment]="comment"
+      ></app-display-comment>
+    </ng-container>
+  </div>
+</div>

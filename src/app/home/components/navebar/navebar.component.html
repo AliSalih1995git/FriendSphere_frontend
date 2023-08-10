@@ -62,13 +62,8 @@
       <img [src]="user?.picture" alt="" />
       <span>{{ user?.first_name }}</span>
     </a>
-    <div class="circle_icon" [ngClass]="{ active_header: showUserMenu }">
+    <div class="">
       <app-drop-down></app-drop-down>
-      <!-- <div (click)="toggleUserMenu()">*</div>
-      <app-drop-down
-        *ngIf="showUserMenu"
-        (setShowUserMenu)="handleShowUserMenu($event)"
-      ></app-drop-down> -->
     </div>
   </div>
 </header>

@@ -1,0 +1,43 @@
+<div
+  class="eflex_center emoji-picker-input"
+  class="background-image"
+  [style.background-image]="
+    selectedBackground ? 'url(' + selectedBackground + ')' : 'none'
+  "
+>
+  <div class="flex_center">
+    <textarea
+      class="post_input"
+      placeholder="What's on your mind, {{ user.first_name }}"
+      name="textarea"
+      [(ngModel)]="textArea"
+    ></textarea>
+  </div>
+  <div class="post_emojis_wrap">
+    <div class="post_backgrounds">
+      <i
+        class="fa-solid fa-xmark text-2xl"
+        (click)="removeBackground()"
+        style="color: #005cfa"
+      ></i>
+
+      <div class="post_backgrounds">
+        <img
+          class="background-option"
+          *ngFor="let bgUrl of postBackgrounds"
+          [src]="bgUrl"
+          (click)="setBackground(bgUrl)"
+        />
+      </div>
+      <div class="post_emojis_wrap flex justify-center items-center w-4 h-4">
+        <button (click)="emojiPickerVisible()">😀</button>
+        <emoji-mart
+          class="comment_emoji_picker"
+          *ngIf="isEmojiPickerVisible"
+          (emojiSelect)="addEmoji($event)"
+          title="Choose your emoji"
+        ></emoji-mart>
+      </div>
+    </div>
+  </div>
+</div>

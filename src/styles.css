@@ -4,6 +4,8 @@
 @tailwind utilities;
 
 /* @import "~ngx-toastr/toastr"; */
+/* @import "@ctrl/ngx-emoji-mart/picker"; */
+@import "~@ctrl/ngx-emoji-mart/picker";
 
 * {
   padding: 0;

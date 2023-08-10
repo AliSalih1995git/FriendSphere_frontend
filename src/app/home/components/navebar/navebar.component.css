@@ -152,6 +152,11 @@ header {
   font-size: 13px;
   color: #fff;
 }
+.down_arrow {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
 /*---Header right-----*/
 
 /*---Search menu-----*/

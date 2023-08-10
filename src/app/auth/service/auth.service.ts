@@ -7,15 +7,13 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  private BackendUrl: string = environment.backendUrl;
-
   constructor(private http: HttpClient) {}
 
   login(formData: any): Observable<any> {
-    return this.http.post(`${this.BackendUrl}/login`, formData);
+    return this.http.post(`/login`, formData);
   }
 
   register(formData: any): Observable<any> {
-    return this.http.post(`${this.BackendUrl}/register`, formData);
+    return this.http.post(`/register`, formData);
   }
 }
