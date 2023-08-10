@@ -1,11 +1,8 @@
 export interface UserModel {
-  first_name: string;
-  following: any[];
-  id: string;
-  last_name: string;
-  message: string;
-  picture: string;
-  token: string;
-  username: string;
-  verified: boolean;
+  firstName: string;
+  surname: string;
+  email: string;
+  password: string;
+  dob?: string;
+  gender?: string;
 }

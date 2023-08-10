@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         console.log(res, 'LOGIN DATA');
         localStorage.setItem('user', JSON.stringify(res));
         this.toastr.success(res.message);
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/home');
       },
       error: (error) => {
         this.toastr.error(error.error.message);

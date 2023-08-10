@@ -1,0 +1,74 @@
+<header>
+  <div class="header_left">
+    <a routerLink="/" class="header_logo">
+      <div class="circle" *ngIf="darkTheme; else lightLogo">
+        <img src="../../../../assets/angularSvg/logo/logo.png" alt="" />
+      </div>
+      <ng-template #lightLogo>
+        <img src="../../../../assets/angularSvg/logo/darkLogo.png" alt="" />
+      </ng-template>
+    </a>
+    <div class="search search1" (click)="showSearchMenu = true">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search Your friends" class="hide_input" />
+    </div>
+  </div>
+  <!-- <app-search-menu
+          *ngIf="showSearchMenu"
+          [color]="color"
+          (setShowSearchMenu)="showSearchMenu = $event"
+        ></app-search-menu> -->
+  <div class="header_middle">
+    <a
+      [routerLink]="['/']"
+      class="middle_icon"
+      [ngClass]="page === 'home' ? 'active' : 'hover1'"
+      (click)="getAllPosts()"
+    >
+      <i
+        *ngIf="page === 'home'"
+        class="fa-solid fa-house text-2xl"
+        style="color: #005eff"
+      ></i>
+      <i
+        *ngIf="page !== 'home'"
+        class="fa-light fa-house text-2xl"
+        style="color: #005eff"
+      ></i>
+    </a>
+    <a
+      [routerLink]="['/friends']"
+      class="middle_icon"
+      [ngClass]="page === 'friends' ? 'active' : 'hover1'"
+    >
+      <i
+        *ngIf="page === 'friends'"
+        class="fa-solid fa-user-group text-2xl"
+        style="color: #005eff"
+      ></i>
+      <i
+        *ngIf="page !== 'friends'"
+        class="fa-solid fa-user-group text-2xl"
+        style="color: #808080"
+      ></i>
+    </a>
+  </div>
+  <div class="header_right">
+    <a
+      class="profile_link"
+      [ngClass]="{ active_link: page === 'profile' }"
+      (click)="navigateToProfile()"
+    >
+      <img [src]="user?.picture" alt="" />
+      <span>{{ user?.first_name }}</span>
+    </a>
+    <div class="circle_icon" [ngClass]="{ active_header: showUserMenu }">
+      <app-drop-down></app-drop-down>
+      <!-- <div (click)="toggleUserMenu()">*</div>
+      <app-drop-down
+        *ngIf="showUserMenu"
+        (setShowUserMenu)="handleShowUserMenu($event)"
+      ></app-drop-down> -->
+    </div>
+  </div>
+</header>
