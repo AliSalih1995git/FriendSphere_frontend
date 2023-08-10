@@ -23,4 +23,7 @@ export class PostServiceService {
 
     return this.http.post(`/uploadImages`, formData);
   }
+  comment(postId: string, comment: string): Observable<any> {
+    return this.http.put(`/comment`, { postId, comment });
+  }
 }

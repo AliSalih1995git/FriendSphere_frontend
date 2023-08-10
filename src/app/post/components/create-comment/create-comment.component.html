@@ -1,0 +1,22 @@
+<div class="create_comment_wrap">
+  <div class="create_comment">
+    <img [src]="user?.picture" alt="" />
+    <div class="comment_input_wrap">
+      <!-- emoji picker  -->
+      <!-- image upload  -->
+      <input
+        type="text"
+        [(ngModel)]="textArea"
+        placeholder="Write a comment..."
+      />
+      <div class="comment_circle" style="margin-top: 5px">
+        <i
+          class="fa-solid fa-right-to-bracket cursor-pointer"
+          style="color: #0c56d4"
+          (click)="handleSubmit()"
+        ></i>
+        <!-- <h1>loading</h1> -->
+      </div>
+    </div>
+  </div>
+</div>

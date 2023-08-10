@@ -11,6 +11,8 @@ import { ImagePreviewComponent } from './components/image-preview/image-preview.
 import { AddToYourPostComponent } from './components/add-to-your-post/add-to-your-post.component';
 import { EmojiPickerComponent } from './components/emoji-picker/emoji-picker.component';
 import { DisplayPostComponent } from './components/display-post/display-post.component';
+import { CreateCommentComponent } from './components/create-comment/create-comment.component';
+import { DisplayCommentComponent } from './components/display-comment/display-comment.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { DisplayPostComponent } from './components/display-post/display-post.com
     AddToYourPostComponent,
     EmojiPickerComponent,
     DisplayPostComponent,
+    CreateCommentComponent,
+    DisplayCommentComponent,
   ],
   imports: [CommonModule, PostRoutingModule, FormsModule, PickerModule],
   exports: [PostComponent],

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { UserModel } from '../interfaces/userData.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MainServiceService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
   getDarkColor(): string {
     return '#333333';
   }
@@ -26,6 +28,13 @@ export class MainServiceService {
   logout() {
     localStorage.clear();
   }
+  getAllUnknownFriends(id: string): Observable<any> {
+    return this.http.get(`/unknownFriends/${id}`);
+  }
+  addFriend(id: string): Observable<any> {
+    return this.http.put(`/addFriend/${id}`, {});
+  }
+
   dataURItoBlob(dataURI: any) {
     // convert base64/URLEncoded data component to raw binary data held in a string
     var byteString;
