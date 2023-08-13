@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserModel } from '../interfaces/userData.model';
 import { MainServiceService } from '../service/main-service.service';
 import { Post } from '../interfaces/AllInterface';
 import { PostServiceService } from './post-service.service';
@@ -13,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class PostComponent implements OnInit, OnDestroy {
   user!: any;
   posts: Post[] = [];
-  subscription: Subscription | undefined;
+  subscription!: Subscription;
 
   constructor(
     private mainService: MainServiceService,
@@ -21,6 +20,13 @@ export class PostComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.subscription = this.postService
+      .getNewPosts()
+      .subscribe((newPost: any) => {
+        console.log(newPost, 'new opst in component');
+
+        this.posts.unshift(newPost);
+      });
     this.user = this.mainService.getUserData();
     this.fetchPosts();
   }

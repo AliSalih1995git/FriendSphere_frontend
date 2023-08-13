@@ -18,5 +18,6 @@ import { PostModule } from '../post/post.module';
     DropDownComponent,
   ],
   imports: [CommonModule, HomeRoutingModule, PostModule],
+  exports: [NavebarComponent],
 })
 export class HomeModule {}

@@ -11,18 +11,20 @@ export class DisplayPostComponent implements OnInit {
   @Input() user: any;
   visible: boolean = false;
   commentsVisible: boolean = false;
-  comments: any[] = [];
+
   constructor(private postService: PostServiceService) {}
 
   ngOnInit(): void {
-    console.log(this.post, 'Single Post');
+    console.log(this.post, 'All post');
   }
 
   setPopupVisible(isVisible: boolean) {
     this.visible = isVisible;
   }
   handleComment(comment: any) {
-    this.comments.push(comment);
+    console.log(comment, 'handleComment');
+
+    this.post.comments = comment;
   }
   toggleCommentVisibility() {
     console.log(this.commentsVisible, 'click');

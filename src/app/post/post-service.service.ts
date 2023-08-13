@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Post } from '../interfaces/AllInterface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostServiceService {
+  private newPostSubject = new Subject<any>();
   constructor(private http: HttpClient) {}
 
   getAllPost(): Observable<Post[]> {
@@ -14,9 +15,24 @@ export class PostServiceService {
   }
 
   createPost(payload: any): Observable<any> {
-    console.log(payload, 'payload');
+    return new Observable((observer) => {
+      this.http.post(`/createPost`, payload).subscribe({
+        next: (res) => {
+          console.log(res, 'newpost on service');
+          this.newPostSubject.next(res);
+          observer.next(res);
+          observer.complete();
+        },
+        error: (err) => {
+          console.error(err);
+          observer.error(err);
+        },
+      });
+    });
+  }
 
-    return this.http.post(`/createPost`, payload);
+  getNewPosts(): Observable<any> {
+    return this.newPostSubject.asObservable();
   }
   uploadImages(formData: FormData): Observable<any> {
     console.log(formData, 'formData');

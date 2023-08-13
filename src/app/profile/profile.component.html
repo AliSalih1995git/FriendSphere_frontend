@@ -1,0 +1,44 @@
+<div class="profile">
+  <div *ngIf="visible"></div>
+  <app-navebar page="profile"></app-navebar>
+  <div class="profile_top" #profileTop>
+    <div class="profile_container">
+      <app-cover
+        [cover]="profile.cover"
+        [visitor]="visitor"
+        [photos]="photos.resources"
+      ></app-cover>
+      <app-profile-picture-infos
+        [profile]="profile"
+      ></app-profile-picture-infos>
+      <!-- <app-profile-menu></app-profile-menu>  -->
+    </div>
+  </div>
+  <div class="profile_bottom">
+    <div class="profile_container">
+      <div class="bottom_container">
+        <!-- PplYouMayKnow component -->
+        <div>
+          <div class="profile_left" #leftSide></div>
+          <div class="profile_right">
+            <div class="posts">
+              <ng-container
+                *ngIf="profile.posts && profile.posts.length; else noPosts"
+              >
+                <!-- <app-post [post]="post" [user]="user"></app-post> -->
+                <!-- <app-post
+                  *ngFor="let post of profile.posts"
+                  [key]="post._id"
+                  [profile]="true"
+                ></app-post> -->
+              </ng-container>
+            </div>
+            <ng-template #noPosts>
+              <div class="no_posts">No posts available</div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
