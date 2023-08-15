@@ -1,5 +1,13 @@
 <div class="profile_img_wrap">
   <div class="profile_w_left">
+    <div *ngIf="openPopup">
+      <app-profile-picture
+        [openPopup]="openPopup"
+        (close)="onClosePopup()"
+        [photos]="photos"
+        [user]="user"
+      ></app-profile-picture>
+    </div>
     <div class="profile_w_img">
       <div
         class="profile_w_bg"
@@ -8,27 +16,64 @@
           'background-image': 'url(' + profile.picture + ')'
         }"
       ></div>
-      <div class="profile_circle hover1">
+      <div
+        *ngIf="!visitor"
+        class="profile_circle hover1"
+        (click)="showProfilePicture()"
+      >
         <i class="fa-solid fa-camera" style="color: #0e4fbe"></i>
       </div>
     </div>
     <div class="profile_w_col">
       <div class="profile_name">
         {{ profile.first_name }} {{ profile.last_name }}
-        <div class="othername">Othername</div>
+        <div class="othername" *ngIf="othername">({{ othername }})</div>
       </div>
-      <div class="profile_friend_count"></div>
-      <div class="profile_friend_imgs"></div>
+      <div class="profile_friend_count">
+        <div class="profile_card_count" *ngIf="profile?.friends">
+          {{
+            profile?.friends.length === 0
+              ? ""
+              : profile?.friends.length === 1
+              ? "1 Friend"
+              : profile?.friends.length + " Friends"
+          }}
+        </div>
+      </div>
+      <div class="profile_friend_imgs">
+        <a
+          *ngFor="
+            let friend of profile?.friends;
+            let i = index;
+            trackBy: trackByFriendId
+          "
+          [routerLink]="['/profile', friend.username]"
+        >
+          <img
+            [src]="friend.picture"
+            [style.transform]="'translateX(' + -i * 7 + 'px)'"
+            [style.zIndex]="i"
+            alt=""
+          />
+        </a>
+      </div>
+      <!-- <app-friendship
+      *ngIf="visitor; else notVisitorTemplate"
+      [friendshipp]="profile?.friendship"
+      [profileid]="profile?._id"
+    ></app-friendship> -->
     </div>
-  </div>
-  <div class="profile_w_right">
-    <div class="blue_btn">
-      <img src="../../../icons/plus.png" alt="" class="invert" />
-      <span>Add to story</span>
-    </div>
-    <div class="gray_btn">
-      <i class="fa-solid fa-pen-to-square" style="color: #1053c6"></i>
-      <span>Edit profile</span>
-    </div>
+    <ng-template #notVisitorTemplate>
+      <div class="profile_w_right">
+        <div class="blue_btn">
+          <img src="../../../icons/plus.png" alt="" class="invert" />
+          <span>Add to story</span>
+        </div>
+        <div class="gray_btn">
+          <i class="edit_icon"></i>
+          <span>Edit profile</span>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>

@@ -12,6 +12,20 @@
   border-radius: 5px;
   z-index: 999;
 }
+.postBox_visitor {
+  position: fixed;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: -21.5rem;
+  background: var(--bg-primary);
+  box-shadow: 0 12px 28px 0 var(--shadow-1), 0 2px 4px 0 var(--shadow-2),
+    inset 0 0 0 1px var(--shadow-inset);
+  min-height: 228px;
+  width: 500px;
+  border-radius: 5px;
+  z-index: 999;
+}
 .box_header {
   position: relative;
   display: flex;

@@ -1,5 +1,5 @@
 <!-- <div class="w-1/2 h-52 mt-11 bg-blue-600"> -->
-<div class="postBox">
+<div [class.postBox]="visitor" [class.postBox_visitor]="!visitor">
   <div class="box_header">
     <div class="small_circle" (click)="closeHandler()">
       <i class="fa-solid fa-x" style="color: #0641a7"></i>

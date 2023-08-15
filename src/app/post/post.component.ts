@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { MainServiceService } from '../service/main-service.service';
 import { Post } from '../interfaces/AllInterface';
 import { PostServiceService } from './post-service.service';
@@ -23,8 +23,6 @@ export class PostComponent implements OnInit, OnDestroy {
     this.subscription = this.postService
       .getNewPosts()
       .subscribe((newPost: any) => {
-        console.log(newPost, 'new opst in component');
-
         this.posts.unshift(newPost);
       });
     this.user = this.mainService.getUserData();

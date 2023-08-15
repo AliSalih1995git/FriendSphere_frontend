@@ -1,0 +1,25 @@
+<div class="profile_card">
+  <div class="profile_card_header">
+    Photos
+    <div class="profile_header_link" (click)="AllPhotoVisible()">
+      {{ showAllPhotos ? "Show Less" : "See all photos" }}
+    </div>
+  </div>
+  <div class="profile_card_count">
+    {{
+      photos?.length === 0
+        ? ""
+        : photos?.length === 1
+        ? "1 Photo"
+        : photos?.length + " photos"
+    }}
+  </div>
+  <div class="profile_card_grid">
+    <div
+      *ngFor="let photo of visiblePhotos; trackBy: trackByPhotoId"
+      class="profile_photo_card"
+    >
+      <img [src]="photo.secure_url" alt="" />
+    </div>
+  </div>
+</div>

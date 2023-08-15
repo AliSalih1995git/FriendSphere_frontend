@@ -7,6 +7,6 @@ import { PostModule } from '../post/post.module';
 @NgModule({
   imports: [CommonModule, HomeModule, PostModule],
   declarations: [],
-  exports: [HomeModule],
+  exports: [HomeModule, PostModule],
 })
 export class SharedModule {}

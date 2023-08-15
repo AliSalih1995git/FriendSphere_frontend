@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   user: any;
   photos: any = {};
   othername!: string;
-  visitor: boolean = false;
+  visitor: boolean = true;
   profile: any = {};
 
   constructor(
@@ -27,12 +27,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.mainService.getUserData();
     const paramsValue = this.route.snapshot.params['username'];
-    console.log(paramsValue, 'Paramsvalue');
-
     this.username =
       paramsValue === undefined ? this.user.username : paramsValue;
+    console.log(paramsValue, 'Paramsvalue');
 
     this.getProfile();
+    this.visitor = this.username === this.user.username ? false : true;
   }
   getProfile() {
     this.profileService.getUserData(this.username).subscribe({
@@ -42,8 +42,9 @@ export class ProfileComponent implements OnInit {
         } else {
           this.listImage();
 
+          console.log(res, 'PROFILE');
           this.profile = res;
-          console.log(this.profile, 'PROFILE');
+          this.othername = res?.otherName;
         }
       },
 

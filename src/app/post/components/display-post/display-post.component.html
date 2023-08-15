@@ -49,7 +49,7 @@
         <img
           class="image_post"
           *ngFor="let image of post.images.slice(0, 5); let i = index"
-          [src]="image.url"
+          [src]="image?.url"
           [alt]=""
           [class]="'img-' + i"
         />
@@ -59,6 +59,20 @@
         </div>
       </div>
     </ng-container>
+    <ng-container *ngIf="post.type === 'profilePicture'">
+      <div class="post_profile_wrap">
+        <div class="post_updated_bg">
+          <img [src]="post.user?.cover" alt="" />
+        </div>
+        <img [src]="post.images[0]?.url" alt="" class="post_updated_picture" />
+      </div>
+    </ng-container>
+    <!-- <ng-template #postType>
+      <div class="post_cover_wrap">
+        <img [src]="post.images[0]?.url" alt="" />
+      </div>
+    </ng-template> -->
+
     <ng-template #noImages></ng-template>
   </ng-template>
 

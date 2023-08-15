@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit {
+  @Input() visitor!: boolean;
+
   @Input() setVisible!: boolean;
   constructor() {}
 

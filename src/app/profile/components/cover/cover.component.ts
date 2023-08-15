@@ -7,7 +7,7 @@ import { MainServiceService } from 'src/app/service/main-service.service';
   styleUrls: ['./cover.component.css'],
 })
 export class CoverComponent implements OnInit {
-  @Input() visitor: boolean = true;
+  @Input() visitor!: boolean;
   @Input() cover = '';
   @Input() photos: any = {};
   showCoverMenu = false;
@@ -23,6 +23,8 @@ export class CoverComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.mainService.getUserData();
+    console.log(this.cover, 'COVER');
+    console.log(this.visitor, 'Vicitor');
   }
 
   handleImage(event: any): void {
