@@ -8,16 +8,19 @@
         <img src="../../../../assets/angularSvg/logo/darkLogo.png" alt="" />
       </ng-template>
     </a>
-    <div class="search search1" (click)="showSearchMenu = true">
-      <i class="fa-solid fa-magnifying-glass"></i>
+    <div class="search search1">
+      <i
+        class="fa-solid fa-magnifying-glass"
+        (click)="handleShowSearchMenu()"
+      ></i>
       <input type="text" placeholder="Search Your friends" class="hide_input" />
+      <div *ngIf="showSearchMenu">
+        <app-search-menu
+          (setShowSearchMenu)="HandleShowSearchMenu()"
+        ></app-search-menu>
+      </div>
     </div>
   </div>
-  <!-- <app-search-menu
-          *ngIf="showSearchMenu"
-          [color]="color"
-          (setShowSearchMenu)="showSearchMenu = $event"
-        ></app-search-menu> -->
   <div class="header_middle">
     <a
       [routerLink]="['/']"
@@ -32,8 +35,8 @@
       ></i>
       <i
         *ngIf="page !== 'home'"
-        class="fa-light fa-house text-2xl"
-        style="color: #005eff"
+        class="fa-solid fa-house text-2xl"
+        style="color: #686b70"
       ></i>
     </a>
     <a

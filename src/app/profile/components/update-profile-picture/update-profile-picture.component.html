@@ -1,0 +1,38 @@
+<div class="popup">
+  <div class="postBox">
+    <div class="box_header">
+      <span class="font-bold text-xl">Update profile picture</span>
+      <div class="small_circle" (click)="cancelHandle()">
+        <i class="fa-solid fa-xmark" style="color: #0e4fbe"></i>
+      </div>
+    </div>
+    <div class="crooper">
+      <div
+        [style.backgroundImage]="'url(' + image + ')'"
+        class="profile-picture-preview"
+      ></div>
+    </div>
+    <!-- <div class="update_image_desc mt-2">
+      <textarea
+        placeholder="Description"
+        [(ngModel)]="description"
+        class="textarea_blue details_input bg-gray-500"
+      ></textarea>
+    </div> -->
+
+    <div class="flex_p_t">
+      Your profile picture is public
+
+      <div class="update_submit_wrap">
+        <div class="blue_link" (click)="cancelHandle()">Cancel</div>
+        <button
+          class="blue_btn"
+          [disabled]="loading"
+          (click)="updateProfilePicture()"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

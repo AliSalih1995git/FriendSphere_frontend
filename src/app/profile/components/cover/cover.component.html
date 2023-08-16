@@ -1,0 +1,66 @@
+<div
+  class="profile_cover"
+  #coverRef
+  [style.background-image]="'url(' + coverPicture + ')'"
+  style="background-size: cover"
+>
+  <div *ngIf="coverPicture">
+    <div class="save_changes_cover">
+      <div class="save_changes_left">
+        <i class="fa-solid fa-users" style="color: #1148a7"></i>
+        Your cover photo is public
+      </div>
+      <div class="save_changes_right">
+        <button class="blue_btn opacity_btn" (click)="setCoverPicture()">
+          Cancel
+        </button>
+        <button class="blue_btn" (click)="updateCoverPicture()">
+          <ng-container *ngIf="loading; else saveChanges"> </ng-container>
+          <ng-template #saveChanges> Save changes </ng-template>
+        </button>
+      </div>
+    </div>
+  </div>
+  <input
+    type="file"
+    #refInput
+    hidden
+    accept="image/jpeg,image/png,image/webp,image/gif"
+    (change)="handleImage($event)"
+  />
+  <div class="postError comment_error cover_error" *ngIf="error">
+    <div class="postError_error">{{ error }}</div>
+  </div>
+  <div class="cover" *ngIf="coverPicture">
+    <!-- cropper component  -->
+    <!-- <img [src]="coverPicture" alt="cover " class="cover-image" /> -->
+  </div>
+
+  <img
+    *ngIf="cover && !coverPicture"
+    [src]="cover"
+    class="cover"
+    alt=""
+    #cRef
+  />
+  <div class="udpate_cover_wrapper" *ngIf="!visitor">
+    <div class="open_cover_update" (click)="toggleShowCoverMenu()">
+      <i class="fa-solid fa-camera" style="color: #154eb2"></i>
+      Add Cover Photo
+    </div>
+    <div class="open_cover_menu" *ngIf="showCoverMenu" #menuRef>
+      <!-- <div
+        class="open_cover_menu_item hover1"
+        (click)="navigateToShowOldCovers()"
+      >
+        <i class="fa-solid fa-photo-film" style="color: #124eb5"></i>
+        Select Photo
+      </div> -->
+      <div class="open_cover_menu_item hover1" (click)="refInput.click()">
+        <i class="fa-regular fa-upload" style="color: #1452bd"></i>
+        Upload Photo
+      </div>
+    </div>
+  </div>
+  <!-- olg cover pic -->
+</div>

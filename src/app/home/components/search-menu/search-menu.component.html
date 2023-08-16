@@ -1,0 +1,62 @@
+<div class="header_left search_area scrollbar">
+  <div class="search_wrap">
+    <div class="header_logo">
+      <div class="circle hover1" (click)="onClose()">
+        <i class="fa-solid fa-x" style="color: #0641a7" (click)="onClose()"></i>
+      </div>
+    </div>
+    <div class="search" (click)="showProfilePicture()">
+      <div>
+        <i class="fa-light fa-magnifying-glass" style="color: #19489a"></i>
+      </div>
+      <input
+        type="text"
+        placeholder="Search your friends..."
+        [(ngModel)]="searchTerm"
+        (keyup)="searchHandler()"
+      />
+    </div>
+  </div>
+  <div *ngIf="!results?.length" class="search_history_header">
+    <span>Recent searches</span>
+    <a>Edit</a>
+  </div>
+  <div class="search_history scrollbar">
+    <div
+      *ngFor="
+        let user of searchHistory | orderByDate;
+        let i = index;
+        trackBy: trackByFn
+      "
+      class="search_user_item hover1"
+    >
+      <a
+        class="flex justify-center items-center"
+        [routerLink]="['/profile', user.user.username]"
+        (click)="addToSearchHistoryHandler(user.user._id)"
+      >
+        <img [src]="user.user.picture" alt="" />
+        <span class="ml-1"
+          >{{ user.user.first_name }} {{ user.user.last_name }}</span
+        >
+      </a>
+
+      <i
+        class="fa-solid fa-x circle hover1"
+        style="color: #0641a7"
+        (click)="handleRemove(user.user._id)"
+      ></i>
+    </div>
+  </div>
+  <div class="search_results scrollbar">
+    <a
+      *ngFor="let user of results; let i = index; trackBy: trackByFn"
+      [routerLink]="['/profile', user.username]"
+      class="search_user_item hover1"
+      (click)="addToSearchHistoryHandler(user._id)"
+    >
+      <img [src]="user.picture" alt="" />
+      <span>{{ user.first_name }} {{ user.last_name }}</span>
+    </a>
+  </div>
+</div>

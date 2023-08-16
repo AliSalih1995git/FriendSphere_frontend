@@ -12,7 +12,11 @@
         </div>
         <div class="post_profile_privacy_date">
           {{ post.createdAt | date : "medium" }} .
-          <img src="../../../../assets/styles/iconsImage/public.png" alt="" />
+          <img
+            src="../../../../assets/styles/iconsImage/public.png"
+            style="width: 17px; height: auto"
+            alt=""
+          />
         </div>
       </div>
     </a>
@@ -45,7 +49,7 @@
         <img
           class="image_post"
           *ngFor="let image of post.images.slice(0, 5); let i = index"
-          [src]="image.url"
+          [src]="image?.url"
           [alt]=""
           [class]="'img-' + i"
         />
@@ -55,6 +59,20 @@
         </div>
       </div>
     </ng-container>
+    <ng-container *ngIf="post.type === 'profilePicture'">
+      <div class="post_profile_wrap">
+        <div class="post_updated_bg">
+          <img [src]="post.user?.cover" alt="" />
+        </div>
+        <img [src]="post.images[0]?.url" alt="" class="post_updated_picture" />
+      </div>
+    </ng-container>
+    <!-- <ng-template #postType>
+      <div class="post_cover_wrap">
+        <img [src]="post.images[0]?.url" alt="" />
+      </div>
+    </ng-template> -->
+
     <ng-template #noImages></ng-template>
   </ng-template>
 
@@ -65,7 +83,7 @@
       <div class="reacts_count_num"></div>
     </div>
     <div class="to_right">
-      <div class="comments_count">{{ post.comments.length }} comments</div>
+      <div class="comments_count">{{ post?.comments?.length }} comments</div>
       <div class="share_count">1 share</div>
     </div>
   </div>
@@ -93,17 +111,18 @@
 
   <!-- Comments Wrap -->
   <div class="comments_wrap">
-    <div class="comments_order"></div>
-    <app-create-comment
-      [user]="user"
-      [postId]="post._id"
-      (comment)="handleComment($event)"
-    ></app-create-comment>
-    <ng-container *ngFor="let comment of post.comments">
-      <app-display-comment
-        *ngIf="commentsVisible"
-        [comment]="comment"
-      ></app-display-comment>
-    </ng-container>
+    <div class="comments_order">
+      <app-create-comment
+        [user]="user"
+        [postId]="post._id"
+        (comment)="handleComment($event)"
+      ></app-create-comment>
+      <ng-container *ngFor="let comment of post.comments">
+        <app-display-comment
+          *ngIf="commentsVisible"
+          [comment]="comment"
+        ></app-display-comment>
+      </ng-container>
+    </div>
   </div>
 </div>

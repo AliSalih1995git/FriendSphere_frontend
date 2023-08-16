@@ -27,6 +27,6 @@ import { DisplayCommentComponent } from './components/display-comment/display-co
     DisplayCommentComponent,
   ],
   imports: [CommonModule, PostRoutingModule, FormsModule, PickerModule],
-  exports: [PostComponent],
+  exports: [PostComponent, CreatePostComponent, DisplayPostComponent],
 })
 export class PostModule {}

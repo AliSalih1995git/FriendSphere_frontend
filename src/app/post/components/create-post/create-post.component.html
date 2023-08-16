@@ -15,6 +15,7 @@
   </div>
   <app-create-post-popup
     [user]="user"
+    [visitor]="visitor"
     *ngIf="setVisible"
     (setVisible)="closePopup()"
   ></app-create-post-popup>

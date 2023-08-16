@@ -1,0 +1,134 @@
+.profile {
+  color: var(--color-primary);
+}
+
+.profile_img_wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-bottom: -2.8rem;
+}
+
+.profile_w_left {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 13px 0 13px;
+}
+
+.profile_w_img {
+  position: relative;
+  z-index: 9999;
+}
+
+.profile_w_bg {
+  width: 180px;
+  height: 180px;
+  transform: translateY(-3.6rem);
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  border: 2px solid #fff;
+  background: #fff;
+  cursor: pointer;
+}
+
+.profile_circle {
+  position: absolute;
+  bottom: 4.5rem;
+  right: 0.55rem;
+  background: var(--bg-third);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.profile_name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.profile_w_col {
+  /* transform: translateY(-3.6rem); */
+}
+
+.othername {
+  color: var(--color-secondary);
+  font-size: 20px;
+}
+
+.profile_w_right {
+  display: flex;
+  gap: 8px;
+  padding: 0 18px;
+  margin-bottom: 7px;
+}
+
+.invert {
+  filter: invert(100%);
+}
+
+.blue_btn img {
+  width: 20px;
+}
+
+.gray_btn i {
+  font-size: 16px;
+}
+
+/*-----profile card--------*/
+@media (max-width: 900px) {
+  .profile_w_left {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile_w_col {
+    transform: translateY(-3.6rem);
+  }
+  .profile_w_right {
+    transform: translateY(-3.6rem);
+  }
+  .profile_img_wrap {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .profile_circle {
+    right: 1rem;
+  }
+  .profile_name {
+    padding-bottom: 10px;
+    flex-direction: column;
+  }
+  .pplumayknow {
+    display: none;
+  }
+  .profile_grid {
+    grid-template-columns: 1fr;
+  }
+  .profile_grid .createPost {
+    width: 100% !important;
+  }
+  .bottom_container {
+    padding: 5px;
+  }
+  .friendship {
+    transform: translateY(-4rem);
+  }
+  .othername {
+    transform: translateY(-10px);
+  }
+  .profile_friend_count {
+    text-align: center;
+    transform: translateY(-15px);
+  }
+  .profile_friend_imgs {
+    justify-content: center;
+    transform: translateY(-10px);
+  }
+}

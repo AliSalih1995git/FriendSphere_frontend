@@ -1,0 +1,57 @@
+<div class="profile">
+  <div *ngIf="visible"></div>
+  <app-navebar page="profile"></app-navebar>
+  <div class="profile_top">
+    <div class="profile_container">
+      <app-cover
+        [cover]="profile?.cover"
+        [visitor]="visitor"
+        [user]="user"
+        [photos]="photos.resources"
+      ></app-cover>
+      <app-profile-picture-infos
+        [visitor]="visitor"
+        [profile]="profile"
+        [othername]="othername"
+        [photos]="photos.resources"
+        [user]="user"
+      ></app-profile-picture-infos>
+      <!-- <app-profile-menu></app-profile-menu>  -->
+    </div>
+  </div>
+  <div class="profile_bottom">
+    <div class="profile_container">
+      <div class="bottom_container">
+        <div class="profile_grid">
+          <div class="profile_left" #leftSide>
+            <!-- Intro component -->
+            <app-photos [photos]="photos.resources"></app-photos>
+            <app-friends [friends]="profile.friends"></app-friends>
+          </div>
+          <div class="profile_right">
+            <div class="relative">
+              <app-create-post
+                [user]="user"
+                [visitor]="visitor"
+              ></app-create-post>
+            </div>
+            <div class="posts mt-4">
+              <ng-container
+                *ngIf="profile.posts && profile.posts.length; else noPosts"
+              >
+                <app-display-post
+                  *ngFor="let post of profile.posts"
+                  [post]="post"
+                  [user]="user"
+                ></app-display-post>
+              </ng-container>
+              <ng-template #noPosts>
+                <div class="no_posts">No posts available</div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

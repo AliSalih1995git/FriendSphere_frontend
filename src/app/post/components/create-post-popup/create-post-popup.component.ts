@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PostServiceService } from '../../post-service.service';
 import { MainServiceService } from 'src/app/service/main-service.service';
 
@@ -7,7 +7,8 @@ import { MainServiceService } from 'src/app/service/main-service.service';
   templateUrl: './create-post-popup.component.html',
   styleUrls: ['./create-post-popup.component.css'],
 })
-export class CreatePostPopupComponent {
+export class CreatePostPopupComponent implements OnInit {
+  @Input() visitor!: boolean;
   @Input() user!: any;
   @Output() setVisible: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -23,6 +24,13 @@ export class CreatePostPopupComponent {
     private postService: PostServiceService,
     private mainService: MainServiceService
   ) {}
+
+  ngOnInit(): void {
+    if (this.visitor == undefined) {
+      this.visitor = true;
+    }
+    console.log(this.visitor, 'popup visitor');
+  }
 
   addEmoji(event: any) {
     this.textArea = `${this.textArea}${event.emoji.native}`;
@@ -48,7 +56,6 @@ export class CreatePostPopupComponent {
       images: null,
       user: this.user.id,
     };
-    console.log('WITH BACKGROUND');
 
     this.postService.createPost(payload).subscribe({
       next: (response: any) => {
@@ -71,7 +78,6 @@ export class CreatePostPopupComponent {
     const postImages = this.selectedImages.map((img) =>
       this.mainService.dataURItoBlob(img)
     );
-    console.log(postImages, 'postImages');
 
     const path = `${this.user.username}/post_images`;
     const formData = new FormData();
@@ -79,13 +85,10 @@ export class CreatePostPopupComponent {
     postImages.forEach((image) => {
       formData.append('file', image);
     });
-    console.log(formData, 'After Append');
 
     this.postService.uploadImages(formData).subscribe({
       next: (response: any) => {
         if (response) {
-          console.log(response, 'After image upload');
-
           this.createPostWithImages(response);
         }
         this.loading = false;
@@ -129,7 +132,6 @@ export class CreatePostPopupComponent {
       images: null,
       user: this.user.id,
     };
-    console.log(payload, 'text payload');
 
     this.postService.createPost(payload).subscribe({
       next: (response: any) => {

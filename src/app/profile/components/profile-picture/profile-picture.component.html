@@ -1,0 +1,70 @@
+<div class="popup">
+  <div class="popup-container">
+    <div class="postBox pictureBox">
+      <div class="update_picture_wrap">
+        <div class="box_header mb-2">
+          <span>Update profile picture</span>
+          <div class="small_circle" (click)="closeToggle()">
+            <i class="fa-solid fa-xmark" style="color: #0e4fbe"></i>
+          </div>
+        </div>
+        <div class="update_picture_buttons" (click)="openUpload()">
+          <button class="light_blue_btn">
+            <i class="fa-solid fa-plus" style="color: #195dd2"></i>
+            Upload photo
+          </button>
+          <input
+            #fileInput
+            *ngIf="showUpload"
+            type="file"
+            (change)="handleImage($event)"
+            accept="image/jpeg,image/png,image/webp,image/gif"
+            style="display: none"
+          />
+        </div>
+      </div>
+      <div class="postError comment_error" *ngIf="error">
+        <div class="postError_error">{{ error }}</div>
+        <button class="blue_btn">Try again</button>
+      </div>
+      <div class="old_pictures_wrap scrollbar">
+        <div>Your Profile pictures</div>
+        <div class="old_pictures">
+          <div class="old_pictures">
+            <img
+              *ngFor="
+                let photo of photos
+                  | filterByFolder : user.username + '/profile_picture'
+              "
+              [src]="photo.secure_url"
+              (click)="selectImage(photo.secure_url)"
+              alt=""
+            />
+          </div>
+        </div>
+        <div>Other pictures</div>
+        <div class="old_pictures">
+          <img
+            *ngFor="
+              let photo of photos
+                | filterByOtherFolders : user.username + '/profile_picture'
+            "
+            [src]="photo.secure_url"
+            (click)="selectImage(photo.secure_url)"
+          />
+        </div>
+      </div>
+    </div>
+    <div *ngIf="image">
+      <div>{{ error }}</div>
+      <img [src]="image" alt="" />
+    </div>
+    <app-update-profile-picture
+      *ngIf="image"
+      [image]="image"
+      [user]="user"
+      (setImage)="setProfileImg($event)"
+    ></app-update-profile-picture>
+  </div>
+</div>
+<!-- [setShow]="setShow"  -->

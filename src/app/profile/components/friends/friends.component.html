@@ -1,0 +1,28 @@
+<div class="profile_card">
+  <div class="profile_card_header">
+    Friends
+    <div class="profile_header_link">See all friends</div>
+  </div>
+  <div class="profile_card_count">
+    {{
+      friends.length === 0
+        ? ""
+        : friends.length === 1
+        ? "1 Friend"
+        : friends.length + " Friends"
+    }}
+  </div>
+  <div class="profile_card_grid">
+    <ng-container
+      *ngFor="let friend of friends; let i = index; trackBy: trackByFriendIndex"
+    >
+      <a
+        [routerLink]="'/profile/' + friend.username"
+        class="profile_photo_card"
+      >
+        <img [src]="friend.picture" alt="" />
+        <span>{{ friend.first_name }} {{ friend.last_name }}</span>
+      </a>
+    </ng-container>
+  </div>
+</div>

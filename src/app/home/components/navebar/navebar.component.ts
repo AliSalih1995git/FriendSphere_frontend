@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { map } from 'rxjs';
 import { MainServiceService } from 'src/app/service/main-service.service';
 
 @Component({
@@ -8,16 +9,17 @@ import { MainServiceService } from 'src/app/service/main-service.service';
   styleUrls: ['./navebar.component.css'],
 })
 export class NavebarComponent implements OnInit {
+  @Input() page: string = 'home';
   darkTheme: boolean = false;
   user: any;
   color: string = '#65676b';
   showSearchMenu = false;
   showUserMenu = false;
-  page = 'home';
   @ViewChild('usermenu') userMenu!: ElementRef<any>;
   constructor(
     private mainService: MainServiceService,
-    private router: Router
+    private router: Router,
+    private r: ActivatedRoute
   ) {}
   ngOnInit(): void {
     this.darkTheme = this.mainService.darkTheme();
@@ -40,4 +42,12 @@ export class NavebarComponent implements OnInit {
   }
 
   getAllPosts(): void {}
+  handleShowSearchMenu() {
+    this.showSearchMenu = true;
+    console.log(this.showSearchMenu, 'parent true');
+  }
+  HandleShowSearchMenu() {
+    this.showSearchMenu = false;
+    console.log(this.showSearchMenu, 'parent false');
+  }
 }

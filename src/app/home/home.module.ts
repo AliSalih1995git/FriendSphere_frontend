@@ -8,6 +8,9 @@ import { LeftSideComponent } from './components/left-side/left-side.component';
 import { RightSideComponent } from './components/right-side/right-side.component';
 import { DropDownComponent } from './components/drop-down/drop-down.component';
 import { PostModule } from '../post/post.module';
+import { SearchMenuComponent } from './components/search-menu/search-menu.component';
+import { FormsModule } from '@angular/forms';
+import { OrderByDatePipe } from './order-by-date.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,11 @@ import { PostModule } from '../post/post.module';
     LeftSideComponent,
     RightSideComponent,
     DropDownComponent,
+    SearchMenuComponent,
+    OrderByDatePipe,
+    OrderByDatePipe,
   ],
-  imports: [CommonModule, HomeRoutingModule, PostModule],
+  imports: [CommonModule, HomeRoutingModule, PostModule, FormsModule],
+  exports: [NavebarComponent],
 })
 export class HomeModule {}
