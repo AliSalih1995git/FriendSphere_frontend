@@ -1,4 +1,9 @@
-<div class="profile_cover" #coverRef>
+<div
+  class="profile_cover"
+  #coverRef
+  [style.background-image]="'url(' + coverPicture + ')'"
+  style="background-size: cover"
+>
   <div *ngIf="coverPicture">
     <div class="save_changes_cover">
       <div class="save_changes_left">
@@ -26,9 +31,11 @@
   <div class="postError comment_error cover_error" *ngIf="error">
     <div class="postError_error">{{ error }}</div>
   </div>
-  <div class="cover_crooper" *ngIf="coverPicture">
+  <div class="cover" *ngIf="coverPicture">
     <!-- cropper component  -->
+    <!-- <img [src]="coverPicture" alt="cover " class="cover-image" /> -->
   </div>
+
   <img
     *ngIf="cover && !coverPicture"
     [src]="cover"
@@ -42,13 +49,13 @@
       Add Cover Photo
     </div>
     <div class="open_cover_menu" *ngIf="showCoverMenu" #menuRef>
-      <div
+      <!-- <div
         class="open_cover_menu_item hover1"
         (click)="navigateToShowOldCovers()"
       >
         <i class="fa-solid fa-photo-film" style="color: #124eb5"></i>
         Select Photo
-      </div>
+      </div> -->
       <div class="open_cover_menu_item hover1" (click)="refInput.click()">
         <i class="fa-regular fa-upload" style="color: #1452bd"></i>
         Upload Photo

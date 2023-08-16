@@ -1,0 +1,64 @@
+<div class="friendship">
+  <div *ngIf="friendship?.friends; else addFriend">
+    <div class="friends_menu_wrap">
+      <button class="gray_btn" (click)="handleFriendsMenu()">
+        <i class="fa-solid fa-user-group" style="color: #1450b8"></i>
+        <span>Friends</span>
+      </button>
+      <div *ngIf="friendsMenu" class="open_cover_menu" #menu>
+        <div class="open_cover_menu_item hover1" (click)="toggleFollow()">
+          <i class="fa-solid fa-users-rectangle" style="color: #214a91"></i>
+          {{ friendship?.following ? "Unfollow" : "Follow" }}
+        </div>
+        <div class="open_cover_menu_item hover1" (click)="unfriendHandler()">
+          <i class="fa-regular fa-user-slash" style="color: #23509f"></i>
+          Unfriend
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #addFriend>
+    <div *ngIf="!friendship?.requestSent && !friendship?.requestReceived">
+      <button class="blue_btn" (click)="addFriendHandler()">
+        <i class="fa-solid fa-user-group" style="color: #1450b8"></i>
+        <span>Add Friend</span>
+      </button>
+    </div>
+  </ng-template>
+  <div *ngIf="friendship?.requestSent">
+    <button class="blue_btn" (click)="cancelRequestHandler()">
+      <i class="fa-regular fa-rectangle-xmark" style="color: #2254aa"></i>
+      <span>Cancel Request</span>
+    </button>
+  </div>
+  <div *ngIf="friendship?.requestReceived">
+    <div class="friends_menu_wrap">
+      <button class="gray_btn" (click)="respondMenu = true">
+        <i class="fa-solid fa-user-group" style="color: #1450b8"></i>
+        <span>Respond</span>
+      </button>
+      <div *ngIf="respondMenu" class="open_cover_menu" #menu1>
+        <div
+          class="open_cover_menu_item hover1"
+          (click)="acceptRequestHandler()"
+        >
+          Confirm
+        </div>
+        <div
+          class="open_cover_menu_item hover1"
+          (click)="deleteRequestHandler()"
+        >
+          Delete
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <button
+      class="{{ friendship?.following ? 'gray_btn' : 'blue_btn' }}"
+      (click)="toggleFollow()"
+    >
+      <span>{{ friendship?.following ? "Following" : "Follow" }}</span>
+    </button>
+  </div>
+</div>

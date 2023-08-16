@@ -57,23 +57,11 @@
           />
         </a>
       </div>
-      <!-- <app-friendship
-      *ngIf="visitor; else notVisitorTemplate"
-      [friendshipp]="profile?.friendship"
-      [profileid]="profile?._id"
-    ></app-friendship> -->
+      <app-friendship
+        *ngIf="visitor"
+        [friendshipp]="profile?.friendship"
+        [profileid]="profile?._id"
+      ></app-friendship>
     </div>
-    <ng-template #notVisitorTemplate>
-      <div class="profile_w_right">
-        <div class="blue_btn">
-          <img src="../../../icons/plus.png" alt="" class="invert" />
-          <span>Add to story</span>
-        </div>
-        <div class="gray_btn">
-          <i class="edit_icon"></i>
-          <span>Edit profile</span>
-        </div>
-      </div>
-    </ng-template>
   </div>
 </div>

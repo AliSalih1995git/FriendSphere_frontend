@@ -42,4 +42,12 @@ export class NavebarComponent implements OnInit {
   }
 
   getAllPosts(): void {}
+  handleShowSearchMenu() {
+    this.showSearchMenu = true;
+    console.log(this.showSearchMenu, 'parent true');
+  }
+  HandleShowSearchMenu() {
+    this.showSearchMenu = false;
+    console.log(this.showSearchMenu, 'parent false');
+  }
 }

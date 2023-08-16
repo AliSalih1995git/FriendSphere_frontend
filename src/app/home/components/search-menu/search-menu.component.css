@@ -12,8 +12,11 @@ header {
 }
 /*---Header left-----*/
 .header_left {
+  position: absolute;
+  left: 25px;
+  top: 0;
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: 10px;
   padding: 5px 1rem;
 }
@@ -34,7 +37,6 @@ header {
   padding: 10px 32px 10px 10px;
   border-radius: 50px;
   cursor: text;
-  position: relative;
 }
 .search input {
   outline: none;
@@ -152,11 +154,6 @@ header {
   padding: 1px 6px;
   font-size: 13px;
   color: #fff;
-}
-.down_arrow {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
 }
 /*---Header right-----*/
 
@@ -612,6 +609,7 @@ header {
     width: 310px;
   }
 }
+
 /*---responsive----------*/
 
 /*----Active header----*/

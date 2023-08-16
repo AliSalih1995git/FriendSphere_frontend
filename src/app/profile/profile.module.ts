@@ -13,6 +13,7 @@ import { UpdateProfilePictureComponent } from './components/update-profile-pictu
 import { FormsModule } from '@angular/forms';
 import { CustomPipe } from './custom.pipe';
 import { FilterByOtherFoldersPipe } from './filter-by-other-folders.pipe';
+import { FriendshipComponent } from './components/friendship/friendship.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FilterByOtherFoldersPipe } from './filter-by-other-folders.pipe';
     UpdateProfilePictureComponent,
     CustomPipe,
     FilterByOtherFoldersPipe,
+    FriendshipComponent,
   ],
   imports: [FormsModule, CommonModule, ProfileRoutingModule, SharedModule],
 })

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from './service/profile.service';
 import { MainServiceService } from '../service/main-service.service';
@@ -10,12 +10,12 @@ import { MainServiceService } from '../service/main-service.service';
 })
 export class ProfileComponent implements OnInit {
   visible: boolean = false;
-  username: string = '';
-  user: any;
-  photos: any = {};
-  othername!: string;
-  visitor: boolean = true;
-  profile: any = {};
+  @Input() username: string = '';
+  @Input() user: any;
+  @Input() photos: any = {};
+  @Input() othername!: string;
+  @Input() visitor: boolean = true;
+  @Input() profile: any = {};
 
   constructor(
     private profileService: ProfileService,
@@ -29,7 +29,6 @@ export class ProfileComponent implements OnInit {
     const paramsValue = this.route.snapshot.params['username'];
     this.username =
       paramsValue === undefined ? this.user.username : paramsValue;
-    console.log(paramsValue, 'Paramsvalue');
 
     this.getProfile();
     this.visitor = this.username === this.user.username ? false : true;
@@ -40,11 +39,10 @@ export class ProfileComponent implements OnInit {
         if (res.ok === false) {
           this.router.navigate(['/profile']);
         } else {
-          this.listImage();
-
-          console.log(res, 'PROFILE');
           this.profile = res;
-          this.othername = res?.otherName;
+          this.othername = res?.username;
+
+          this.listImage();
         }
       },
 
@@ -61,7 +59,6 @@ export class ProfileComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.photos = res;
-          console.log(res, 'ListImages');
         },
         error: (error) => console.log(error),
       });

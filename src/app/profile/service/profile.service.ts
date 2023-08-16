@@ -25,4 +25,37 @@ export class ProfileService {
   updateProfilePicture(url: string): Observable<string> {
     return this.http.put<string>(`/updateProfilePicture`, { url });
   }
+  updateCover(url: string): Observable<string> {
+    return this.http.put<string>(`/updateCover`, { url });
+  }
+
+  // Add friend services
+
+  addFriend(id: string): Observable<any> {
+    return this.http.put(`/addFriend/${id}`, {});
+  }
+
+  cancelRequest(id: string): Observable<any> {
+    return this.http.put(`/cancelRequest/${id}`, {});
+  }
+
+  follow(id: string): Observable<any> {
+    return this.http.put(`/follow/${id}`, {});
+  }
+
+  unfollow(id: string): Observable<any> {
+    return this.http.put(`/unfollow/${id}`, {});
+  }
+
+  acceptRequest(id: string): Observable<any> {
+    return this.http.put(`/acceptRequest/${id}`, {});
+  }
+
+  unfriend(id: string): Observable<any> {
+    return this.http.put(`/unfriend/${id}`, {});
+  }
+
+  deleteRequest(id: string): Observable<any> {
+    return this.http.put(`/deleteRequest/${id}`, {});
+  }
 }

@@ -1,11 +1,12 @@
 <div class="profile">
   <div *ngIf="visible"></div>
   <app-navebar page="profile"></app-navebar>
-  <div class="profile_top" #profileTop>
+  <div class="profile_top">
     <div class="profile_container">
       <app-cover
         [cover]="profile?.cover"
         [visitor]="visitor"
+        [user]="user"
         [photos]="photos.resources"
       ></app-cover>
       <app-profile-picture-infos
