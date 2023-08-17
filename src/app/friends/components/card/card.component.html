@@ -1,0 +1,20 @@
+<div class="req_card">
+  <a [routerLink]="['/profile', userr.username]">
+    <img [src]="userr.picture" alt="" />
+  </a>
+  <div class="req_name">{{ userr.first_name }} {{ userr.last_name }}</div>
+
+  <ng-container [ngSwitch]="type">
+    <ng-container *ngSwitchCase="'sent'">
+      <button class="blue_btn" (click)="handleCancelRequest(userr._id)">
+        Cancel Request
+      </button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'request'">
+      <button class="blue_btn" (click)="handleConfirm(userr._id)">
+        Confirm
+      </button>
+      <button class="gray_btn" (click)="handleDelete(userr._id)">Delete</button>
+    </ng-container>
+  </ng-container>
+</div>

@@ -39,23 +39,24 @@
               : profile?.friends.length + " Friends"
           }}
         </div>
-      </div>
-      <div class="profile_friend_imgs">
-        <a
-          *ngFor="
-            let friend of profile?.friends;
-            let i = index;
-            trackBy: trackByFriendId
-          "
-          [routerLink]="['/profile', friend.username]"
-        >
-          <img
-            [src]="friend.picture"
-            [style.transform]="'translateX(' + -i * 7 + 'px)'"
-            [style.zIndex]="i"
-            alt=""
-          />
-        </a>
+        <div class="profile_friend_imgs mb-1">
+          <a
+            *ngFor="
+              let friend of profile?.friends;
+              let i = index;
+              trackBy: trackByFriendId
+            "
+            [routerLink]="['/profile', friend.username]"
+          >
+            <img
+              class="w-6 h-6 rounded-full border-black"
+              [src]="friend.picture"
+              [style.transform]="'translateX(' + -i * 7 + 'px)'"
+              [style.zIndex]="i"
+              alt=""
+            />
+          </a>
+        </div>
       </div>
       <app-friendship
         *ngIf="visitor"
