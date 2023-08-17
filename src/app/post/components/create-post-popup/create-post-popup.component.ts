@@ -29,7 +29,6 @@ export class CreatePostPopupComponent implements OnInit {
     if (this.visitor == undefined) {
       this.visitor = true;
     }
-    console.log(this.visitor, 'popup visitor');
   }
 
   addEmoji(event: any) {
@@ -73,8 +72,6 @@ export class CreatePostPopupComponent implements OnInit {
   }
 
   uploadImagesAndCreatePost() {
-    console.log('WITH IMAGE');
-
     const postImages = this.selectedImages.map((img) =>
       this.mainService.dataURItoBlob(img)
     );
@@ -158,8 +155,6 @@ export class CreatePostPopupComponent implements OnInit {
     this.setVisible.emit(false);
   }
   handleDataChange(event: any) {
-    console.log(event.textArea, 'textArea');
-    console.log(event.selectedBackground, 'textArea');
     this.textArea = event.textArea;
     this.background = event.selectedBackground;
   }

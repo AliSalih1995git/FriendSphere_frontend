@@ -27,13 +27,10 @@ export class ProfilePictureComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.image, 'First img');
-  }
+  ngOnInit(): void {}
 
   handleImage(event: any): void {
     const file = event.target.files[0];
-    console.log(file, 'selected img');
 
     if (
       file.type !== 'image/jpeg' &&
@@ -57,7 +54,6 @@ export class ProfilePictureComponent implements OnInit {
 
   selectImage(photoUrl: string): void {
     this.image = photoUrl;
-    console.log(this.image, 'selected img');
   }
 
   clearError(): void {

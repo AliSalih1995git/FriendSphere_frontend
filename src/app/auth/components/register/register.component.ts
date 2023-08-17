@@ -57,7 +57,6 @@ export class RegisterComponent implements OnInit {
         gender,
       };
 
-      console.log(requestBody, 'REGISTER');
       this.authService.register(requestBody).subscribe({
         next: (res) => {
           localStorage.setItem('user', JSON.stringify(res));

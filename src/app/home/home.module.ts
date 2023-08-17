@@ -11,6 +11,7 @@ import { PostModule } from '../post/post.module';
 import { SearchMenuComponent } from './components/search-menu/search-menu.component';
 import { FormsModule } from '@angular/forms';
 import { OrderByDatePipe } from './order-by-date.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,13 @@ import { OrderByDatePipe } from './order-by-date.pipe';
     OrderByDatePipe,
     OrderByDatePipe,
   ],
-  imports: [CommonModule, HomeRoutingModule, PostModule, FormsModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    PostModule,
+    FormsModule,
+    SharedModule,
+  ],
   exports: [NavebarComponent],
 })
 export class HomeModule {}

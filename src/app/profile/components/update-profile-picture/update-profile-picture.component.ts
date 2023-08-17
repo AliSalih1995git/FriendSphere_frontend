@@ -22,9 +22,7 @@ export class UpdateProfilePictureComponent implements OnInit {
   picture: any;
 
   constructor(private prfileService: ProfileService) {}
-  ngOnInit(): void {
-    console.log(this.image, 'this.image');
-  }
+  ngOnInit(): void {}
 
   // async updateProfilePicture() {
   //   const path = `${this.user.username}/profile_picture`;
@@ -74,8 +72,6 @@ export class UpdateProfilePictureComponent implements OnInit {
   //   }
   // }
   async updateProfilePicture() {
-    console.log('updateProfilePicture');
-
     try {
       const path = `${this.user.username}/profile_picture`;
       const blob = await fetch(this.image).then((response) => response.blob());
@@ -87,13 +83,10 @@ export class UpdateProfilePictureComponent implements OnInit {
 
       this.prfileService.uploadImage(formData).subscribe({
         next: (res) => {
-          console.log(res, 'uploadImage');
-
           this.prfileService.updateProfilePicture(res[0].url).subscribe({
             next: (res) => {
               if (res === 'ok') {
                 this.imageResponse = res;
-                console.log(this.imageResponse, 'this.imageResponse.url');
                 this.createProfilePicturePost();
                 // this.updateLocalstorage();
               }
@@ -117,11 +110,8 @@ export class UpdateProfilePictureComponent implements OnInit {
       user: this.user.id,
     };
 
-    console.log(postData, 'postData');
-
     this.prfileService.createPost(postData).subscribe({
       next: (res) => {
-        console.log('Posted success response', res);
         this.handlePostResponse(res);
       },
       error: (err) => console.log(err),
@@ -132,7 +122,6 @@ export class UpdateProfilePictureComponent implements OnInit {
     if (response.status === 'ok') {
       this.loading = false;
       this.setImage.emit();
-      console.log(this.imageResponse.url);
       this.image = this.imageResponse.url;
       this.setImage.emit();
     } else {

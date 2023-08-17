@@ -35,7 +35,6 @@ export class ProfilePictureInfosComponent implements OnInit {
     this.getProfile();
     // this.profileData = this.profile;
 
-    console.log(this.visitor, 'this.visitor');
     // console.log(this.profileData, 'this.profileData');
   }
 
@@ -47,8 +46,6 @@ export class ProfilePictureInfosComponent implements OnInit {
         } else {
           this.profile = res;
           this.othername = res?.username;
-          console.log(this.profile, 'this.profile2');
-          console.log(this.othername, 'this.othername');
         }
       },
 
