@@ -1,0 +1,23 @@
+.req_card {
+  background: var(--bg-primary);
+  box-shadow: 1px 1px 1px var(--shadow-1);
+  width: 210px;
+  height: fit-content;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.req_card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.req_card button {
+  width: 170px !important;
+}

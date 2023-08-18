@@ -31,6 +31,7 @@ const routes: Routes = [
       import('./profile/profile.module').then((m) => m.ProfileModule),
   },
   { path: 'shared', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
+  { path: 'friends', loadChildren: () => import('./friends/friends.module').then(m => m.FriendsModule) },
 ];
 
 @NgModule({

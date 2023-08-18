@@ -35,7 +35,7 @@ export class ProfilePictureInfosComponent implements OnInit {
     this.getProfile();
     // this.profileData = this.profile;
 
-    console.log(this.visitor, 'this.visitor');
+    console.log(this.profile?.friendship, 'this.visitor');
     // console.log(this.profileData, 'this.profileData');
   }
 
