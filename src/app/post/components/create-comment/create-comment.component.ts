@@ -21,7 +21,6 @@ export class CreateCommentComponent implements OnInit {
       this.PostService.comment(this.postId, this.textArea).subscribe({
         next: (res: any) => {
           this.comment.emit(res);
-          console.log(res, 'comment Succesfull');
 
           this.textArea = '';
         },

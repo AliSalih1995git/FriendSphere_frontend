@@ -10,9 +10,7 @@ export class PhotosComponent implements OnInit {
   showAllPhotos: boolean = false;
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.photos, 'Photos');
-  }
+  ngOnInit(): void {}
 
   trackByPhotoId(index: number, photo: any): string {
     return photo.public_id;

@@ -17,7 +17,6 @@ export class RightSideComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.mainService.getUserData();
-    console.log(this.user, 'USER');
 
     this.getAllFriends();
   }
@@ -36,7 +35,6 @@ export class RightSideComponent implements OnInit {
     this.mainService.addFriend(friendId).subscribe({
       next: (res) => {
         this.toastr.success(res.message);
-        console.log(res, 'Add friend');
       },
       error: (error) => {
         console.log(error);

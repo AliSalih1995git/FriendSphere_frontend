@@ -28,8 +28,6 @@ export class CoverComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.mainService.getUserData();
-    console.log(this.cover, 'COVER');
-    console.log(this.coverPicture, 'Selected image');
   }
 
   handleImage(event: any): void {
@@ -47,14 +45,12 @@ export class CoverComponent implements OnInit {
       this.error = `${file.name} is too large, max 5mb allowed.`;
       return;
     }
-    console.log(file, 'file');
 
     // this.coverPicture = event.target.result;
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (event: any) => {
       this.coverPicture = event.target.result;
-      console.log(this.coverPicture, 'this coverPicture');
     };
   }
 
@@ -82,8 +78,6 @@ export class CoverComponent implements OnInit {
                     })
                     .subscribe({
                       next: (new_post: any) => {
-                        console.log(new_post, 'new_post');
-
                         if (new_post === 'ok') {
                           this.loading = false;
                           this.coverPicture = '';

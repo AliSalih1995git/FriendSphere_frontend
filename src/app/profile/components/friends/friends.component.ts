@@ -12,8 +12,6 @@ export class FriendsComponent implements OnInit {
   ngOnInit(): void {}
 
   trackByFriendIndex(index: number, friend: any): number {
-    console.log(friend, 'Each friend');
-
     return index;
   }
 }

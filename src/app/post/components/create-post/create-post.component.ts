@@ -14,13 +14,9 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {}
   @Input() user: any;
   setVisiblePopup() {
-    console.log('post popup open');
-
     this.setVisible = true;
   }
   closePopup() {
-    console.log('post popup close');
-
     this.setVisible = false;
   }
 }

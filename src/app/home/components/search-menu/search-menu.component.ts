@@ -33,8 +33,6 @@ export class SearchMenuComponent implements OnInit {
   }
 
   searchHandler(): void {
-    console.log('enter');
-
     if (this.searchTerm === '') {
       this.results = [];
     } else {
@@ -54,8 +52,6 @@ export class SearchMenuComponent implements OnInit {
   }
 
   handleRemove(searchUser: any): void {
-    console.log('handleRemove');
-
     this.homeService.removeFromSearch(searchUser).subscribe(() => {
       this.getHistory();
     });
@@ -70,8 +66,6 @@ export class SearchMenuComponent implements OnInit {
   }
 
   onClose(): void {
-    console.log('clicked');
-
     this.setShowSearchMenu.emit();
   }
 

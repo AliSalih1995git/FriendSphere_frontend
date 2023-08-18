@@ -99,8 +99,6 @@ export class ImagePreviewComponent implements OnInit {
   }
 
   emitSelectedImages(images: string[]) {
-    console.log(this.text, 'text data');
-
     this.imagesSelected.emit({ images: images, textArea: this.text });
   }
 }

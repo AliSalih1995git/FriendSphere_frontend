@@ -28,8 +28,6 @@ export class FriendshipComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.userService.getUserData();
     this.friendship = this.friendshipp;
-    console.log(this.friendship, 'this.friendship');
-    console.log(this.profileid, 'this.profileid');
   }
 
   addFriendHandler() {
