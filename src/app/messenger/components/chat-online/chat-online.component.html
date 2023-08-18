@@ -1,0 +1,20 @@
+<div class="ChatOnline">
+  <div
+    *ngFor="let o of onlineFriends; let i = index"
+    class="chatOnlineFriend"
+    (click)="handleClick(o)"
+  >
+    <div class="chatOnlineImgContainer">
+      <img
+        class="chatOnlineImg"
+        [src]="
+          o?.picture ||
+          'https://res.cloudinary.com/dpnark7pd/image/upload/v1669349105/Alisalih/profile_picture/loxuab43po1wgonl9lqg.jpg'
+        "
+        alt=""
+      />
+      <div class="chatOnlineBadge"></div>
+    </div>
+    <span class="chatOnlineName">{{ o?.username }}</span>
+  </div>
+</div>
