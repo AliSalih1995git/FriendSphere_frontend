@@ -1,0 +1,11 @@
+<div [ngClass]="{ message: true, own: own }" class="message">
+  <div class="messageTop">
+    <img
+      class="messageImg"
+      src="https://res.cloudinary.com/dmhcnhtng/image/upload/v1643044376/avatars/default_pic_jeaybr.png"
+      alt=""
+    />
+    <p class="messageText">{{ message.text }}</p>
+  </div>
+  <div class="messageBottom">{{ formatTimestamp(message.createdAt) }}</div>
+</div>

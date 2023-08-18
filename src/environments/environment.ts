@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   backendUrl: 'http://localhost:8002',
+  socketUrl: 'ws://localhost:8900',
 };
 
 /*
