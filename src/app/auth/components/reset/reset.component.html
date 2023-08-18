@@ -1,0 +1,46 @@
+<div class="reset">
+  <div class="reset_header">
+    <h1>FriendSphere</h1>
+    <div class="right_reset">
+      <!-- User profile and logout buttons -->
+      <ng-container *ngIf="user; else loginButton">
+        <a routerLink="/profile">
+          <img [src]="user.picture" alt="" />
+        </a>
+        <button class="blue_btn" (click)="logout()">Logout</button>
+      </ng-container>
+      <ng-template #loginButton>
+        <a routerLink="/auth/login" class="right_reset">
+          <button class="blue_btn">Login</button>
+        </a>
+      </ng-template>
+    </div>
+  </div>
+  <div class="reset_wrap">
+    <!-- Render appropriate components based on 'visible' value -->
+    <ng-container [ngSwitch]="visible">
+      <app-search-account
+        *ngSwitchCase="0"
+        [email]="email"
+        (setEmail)="email = $event"
+        (setUserInfos)="userInfosDetails($event)"
+        (setVisible)="visibleResult($event)"
+      ></app-search-account>
+      <app-send-email
+        *ngSwitchCase="1"
+        [userInfos]="userInfos"
+        (setVisible)="visibleResult($event)"
+      ></app-send-email>
+      <app-code-verification
+        *ngSwitchCase="2"
+        (setVisible)="visibleResult($event)"
+        [userInfos]="userInfos"
+      ></app-code-verification>
+      <app-change-password
+        *ngSwitchCase="3"
+        (setVisible)="visibleResult($event)"
+        [userInfos]="userInfos"
+      ></app-change-password>
+    </ng-container>
+  </div>
+</div>

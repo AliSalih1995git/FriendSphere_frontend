@@ -1,0 +1,14 @@
+<div class="reset_form">
+  <div class="reset_form_header">Code verification</div>
+  <div class="reset_form_text">
+    Please enter the code that has been sent to your email.
+  </div>
+  <form (ngSubmit)="verifyCode()">
+    <input type="text" [(ngModel)]="code" name="code" placeholder="Code" />
+    <div class="error_text text-red-600">{{ error }}</div>
+    <div class="reset_form_btns">
+      <a routerLink="/auth/login" class="gray_btn">Cancel</a>
+      <button type="submit" class="blue_btn">Continue</button>
+    </div>
+  </form>
+</div>

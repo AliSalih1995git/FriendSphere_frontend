@@ -1,0 +1,27 @@
+<div class="reset_form dynamic_height">
+  <div class="reset_form_header">Reset Your Password</div>
+  <div class="reset_grid">
+    <div class="reset_left">
+      <div class="reset_form_text">
+        How do you want to receive the code to reset your password?
+      </div>
+      <label class="hover1">
+        <input type="radio" name="" id="email" checked disabled />
+        <div class="label_col">
+          <span>Send code via email</span>
+          <span>{{ userInfos.email }}</span>
+        </div>
+      </label>
+    </div>
+    <div class="reset_right">
+      <img [src]="userInfos.picture" alt="" />
+      <span>{{ userInfos.email }}</span>
+      <span>WeShare user</span>
+    </div>
+  </div>
+  <div class="error_text paddingl">{{ setError }}</div>
+  <div class="reset_form_btns">
+    <a class="gray_btn" (click)="handleCancel()">Not you?</a>
+    <button (click)="sendEmail()" class="blue_btn">Continue</button>
+  </div>
+</div>

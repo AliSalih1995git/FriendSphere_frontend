@@ -1,0 +1,26 @@
+<div class="reset_form">
+  <div class="reset_form_header">Find Your Account</div>
+  <div class="reset_form_text">
+    Please enter your email address or mobile number to search for your account.
+  </div>
+  <form [formGroup]="searchForm" (ngSubmit)="handleSearch()">
+    <input
+      type="text"
+      formControlName="email"
+      placeholder="Email address or phone number"
+    />
+    <div class="error_text text-red-600">{{ setError }}</div>
+
+    <div class="reset_form_btns">
+      <a routerLink="/auth/login" class="gray_btn">Cancel</a>
+      <button
+        type="submit"
+        class="blue_btn"
+        [ngClass]="{ gray_btn: setLoading }"
+        [disabled]="setLoading"
+      >
+        {{ setLoading ? "Loading" : "Search" }}
+      </button>
+    </div>
+  </form>
+</div>
