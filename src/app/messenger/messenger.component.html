@@ -1,0 +1,60 @@
+<app-navebar page="messanger"></app-navebar>
+<div class="messenger">
+  <div class="chatMenu">
+    <div class="chatMenuWrapper">
+      <div
+        *ngFor="let c of conversations; let i = index"
+        (click)="setCurrentChat(c)"
+        class="conversation"
+        [class.active]="c === currentChat"
+      >
+        <app-conversation [conversation]="c"></app-conversation>
+      </div>
+    </div>
+  </div>
+  <div class="chatBox">
+    <div class="chatBoxWrapper">
+      <ng-container *ngIf="currentChat; else noConversation">
+        <div class="chatBoxTop">
+          <div
+            *ngFor="let m of messages; let i = index"
+            #scrollRef
+            [ngClass]="{
+              'my-message': m?.sender === user.id,
+              'other-message': m?.sender !== user.id
+            }"
+          >
+            <app-message
+              [message]="m"
+              [own]="m.sender === user.id"
+            ></app-message>
+          </div>
+        </div>
+        <div class="chatBoxBottom">
+          <textarea
+            class="chatMessageInput"
+            placeholder="write something..."
+            [(ngModel)]="newMessage"
+          ></textarea>
+          <button class="chatSubmitButton" (click)="handleSubmit()">
+            Send
+          </button>
+        </div>
+      </ng-container>
+      <ng-template #noConversation>
+        <span class="noConversationText"
+          >Open a conversation to start a chat.</span
+        >
+      </ng-template>
+    </div>
+  </div>
+  <div class="chatOnline">
+    <div class="chatOnlineWrapper">
+      <app-chat-online
+        [onlineUsers]="onlineUsers"
+        [currentId]="user.id"
+        (setCurrentChat)="setCurrentChat($event)"
+      ></app-chat-online>
+    </div>
+  </div>
+</div>

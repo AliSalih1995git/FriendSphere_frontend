@@ -5,11 +5,11 @@
   <div class="splitter1"></div>
   <div class="contacts_list" *ngFor="let friend of friends">
     <div class="contact hover3 flex flex-row justify-between items-center">
-      <a routerLink="/profile" class="contact_img">
+      <a [routerLink]="['/profile', friend.username]" class="contact_img">
         <img [src]="friend?.picture" class="contact_circle" alt="" />
       </a>
       <span> {{ friend?.first_name }} {{ friend?.last_name }} </span>
-      <span>
+      <span *ngIf="!friend?.requests.length">
         <img
           src="../../../../assets/styles/icons/right-side/addFriend.png"
           class="filter_blue addFriend_img"

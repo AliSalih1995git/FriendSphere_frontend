@@ -1,0 +1,135 @@
+<app-navebar page="friends"></app-navebar>
+<div class="friends">
+  <div class="friends_left">
+    <div class="friends_left_header">
+      <h3>Friends</h3>
+      <div class="small_circle"></div>
+    </div>
+    <div class="friends_left_wrap">
+      <a
+        routerLink="/friends"
+        [ngClass]="{ active_friends: !type }"
+        class="menu_item hover3"
+      >
+        <div class="small_circle">
+          <i class="fa-solid fa-house-user" style="color: #285db8"></i>
+        </div>
+        <span>Home</span>
+        <div class="rArrow">
+          <i class="fa-solid fa-right-to-bracket" style="color: #254b8d"></i>
+        </div>
+      </a>
+      <a
+        routerLink="/friends/requests"
+        [ngClass]="{ active_friends: type === 'requests' }"
+        class="menu_item hover3"
+      >
+        <div class="small_circle">
+          <i class="fa-solid fa-user-pen" style="color: #2956a3"></i>
+        </div>
+        <span>Friend Requests</span>
+        <div class="rArrow">
+          <i class="fa-solid fa-right-to-bracket" style="color: #254b8d"></i>
+        </div>
+      </a>
+      <a
+        routerLink="/friends/sent"
+        [ngClass]="{ active_friends: type === 'sent' }"
+        class="menu_item hover3"
+      >
+        <div class="small_circle">
+          <i class="fa-solid fa-user-pen" style="color: #2956a3"></i>
+        </div>
+        <span>Sent Requests</span>
+        <div class="rArrow">
+          <i class="fa-solid fa-right-to-bracket" style="color: #254b8d"></i>
+        </div>
+      </a>
+      <a
+        routerLink="/friends/all"
+        [ngClass]="{ active_friends: type === 'all' }"
+        class="menu_item hover3"
+      >
+        <div class="small_circle">
+          <i class="fa-solid fa-users" style="color: #2456ae"></i>
+        </div>
+        <span>All Friends</span>
+        <div class="rArrow">
+          <i class="fa-solid fa-right-to-bracket" style="color: #254b8d"></i>
+        </div>
+      </a>
+    </div>
+    <div class="mt-3 bg-blue-200 p-3 text-center">
+      <a routerLink="/home" class="font-bold"> go to home</a>
+    </div>
+  </div>
+  <div class="friends_right">
+    <div
+      class="friends_right_wrap"
+      *ngIf="type === undefined || type === 'requests'"
+    >
+      <div class="friends_left_header">
+        <h3>Friend Requests</h3>
+        <a
+          *ngIf="type === undefined"
+          [routerLink]="['/friends/requests']"
+          class="see_link hover3"
+          >See all</a
+        >
+      </div>
+      <div class="flex_wrap">
+        <app-card
+          *ngFor="let user of data?.requests"
+          [userr]="user"
+          [type]="'request'"
+          [dataChanged]="getData"
+        ></app-card>
+      </div>
+    </div>
+
+    <div
+      class="friends_right_wrap"
+      *ngIf="type === undefined || type === 'sent'"
+    >
+      <div class="friends_left_header">
+        <h3>Sent Requests</h3>
+        <a
+          *ngIf="type === undefined"
+          [routerLink]="['/friends/sent']"
+          class="see_link hover3"
+          >See all</a
+        >
+      </div>
+      <div class="flex_wrap">
+        <app-card
+          *ngFor="let user of data?.sentRequests"
+          [userr]="user"
+          [type]="'sent'"
+          [dataChanged]="getData"
+        ></app-card>
+      </div>
+    </div>
+    <div
+      class="friends_right_wrap"
+      *ngIf="type === undefined || type === 'all'"
+    >
+      <div class="friends_left_header">
+        <h3>Friends</h3>
+        <a
+          *ngIf="type === undefined"
+          [routerLink]="['/friends/all']"
+          class="see_link hover3"
+          >See all</a
+        >
+      </div>
+      <div class="flex_wrap">
+        <app-card
+          *ngFor="let user of data?.friends"
+          [userr]="user"
+          [type]="'friends'"
+          [dataChanged]="getData"
+        ></app-card>
+      </div>
+    </div>
+  </div>
+</div>
