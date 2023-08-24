@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',
@@ -24,15 +26,32 @@ const routes: Routes = [
   {
     path: 'post',
     loadChildren: () => import('./post/post.module').then((m) => m.PostModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'profile',
     loadChildren: () =>
       import('./profile/profile.module').then((m) => m.ProfileModule),
+    canActivate: [AuthGuard],
   },
-  { path: 'shared', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule) },
-  { path: 'friends', loadChildren: () => import('./friends/friends.module').then(m => m.FriendsModule) },
-  { path: 'messenger', loadChildren: () => import('./messenger/messenger.module').then(m => m.MessengerModule) },
+  {
+    path: 'shared',
+    loadChildren: () =>
+      import('./shared/shared.module').then((m) => m.SharedModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'friends',
+    loadChildren: () =>
+      import('./friends/friends.module').then((m) => m.FriendsModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'messenger',
+    loadChildren: () =>
+      import('./messenger/messenger.module').then((m) => m.MessengerModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

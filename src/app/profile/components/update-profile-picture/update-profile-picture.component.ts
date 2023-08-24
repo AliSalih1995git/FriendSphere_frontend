@@ -131,10 +131,9 @@ export class UpdateProfilePictureComponent implements OnInit {
   private handlePostResponse(response: any) {
     if (response.status === 'ok') {
       this.loading = false;
-      this.setImage.emit();
       console.log(this.imageResponse.url);
       this.image = this.imageResponse.url;
-      this.setImage.emit();
+      this.setImage.emit(this.image);
     } else {
       this.error = response.message;
     }

@@ -21,6 +21,11 @@ export class MainServiceService {
   lightTheme(): boolean {
     return false;
   }
+
+  IsLoggedIn(): boolean {
+    return localStorage.getItem('user') !== null;
+  }
+
   getUserData(): any {
     let userData = localStorage.getItem('user');
     return userData ? JSON.parse(userData) : null;

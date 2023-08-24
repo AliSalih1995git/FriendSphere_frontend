@@ -6,7 +6,7 @@
 
 .chatMenu {
   flex: 3.5;
-  background-color: #87bdef;
+  background-color: var(--bg-forth);
 }
 
 /* .chatMenuInput {
@@ -19,7 +19,7 @@
 .chatBox {
   flex: 5.5;
   height: 100%;
-  background-color: #87bdef;
+  background-color: var(--bg-forth);
   border: 2px solid #5294d2;
 }
 
@@ -41,7 +41,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #18bdd3;
+  border: 1px solid #005eb6;
+  background-color: var(--bg-forth);
 }
 .search {
   display: flex;
@@ -78,6 +79,7 @@
   height: 40px;
   border: none;
   border-radius: 5px;
+  margin-right: 4px;
   cursor: pointer;
   background-color: #005eb6;
   color: white;
@@ -85,7 +87,7 @@
 
 .chatOnline {
   flex: 3;
-  background: #87bdef;
+  background: var(--bg-forth);
 }
 
 .chatMenuWrapper,

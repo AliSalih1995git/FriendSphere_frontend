@@ -9,7 +9,7 @@
         <img [src]="friend?.picture" class="contact_circle" alt="" />
       </a>
       <span> {{ friend?.first_name }} {{ friend?.last_name }} </span>
-      <span *ngIf="!friend?.requests.length">
+      <span class="pro_img" *ngIf="!friend?.requests.length">
         <img
           src="../../../../assets/styles/icons/right-side/addFriend.png"
           class="filter_blue addFriend_img"

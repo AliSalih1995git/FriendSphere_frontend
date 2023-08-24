@@ -54,3 +54,9 @@
   cursor: pointer;
 }
 /*  */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .addFriend_img {
+    display: none;
+  }
+}

@@ -8,6 +8,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { InterSeptorsInterceptor } from './inter-septors.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +20,8 @@ import { InterSeptorsInterceptor } from './inter-septors.interceptor';
     PickerModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {

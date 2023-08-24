@@ -70,8 +70,8 @@ export class ProfilePictureComponent implements OnInit {
     this.showUpload = !this.showUpload;
     this.fileInput.nativeElement.click();
   }
-  setProfileImg(event: any) {
-    this.image = '';
+  setProfileImg(profImg: any) {
+    this.image = profImg;
     this.close.emit();
   }
 }
